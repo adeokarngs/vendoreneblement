@@ -1,0 +1,176 @@
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Container styling */
+.container-fluid {
+  padding: 0;
+}
+
+/* Prevent horizontal scrolling */
+.row {
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll in the row */
+}
+
+/* Content styling */
+.content {
+  padding: 20px;
+}
+
+/* Footer Styling - Reduce size */
+        
+footer {
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  padding: 0px 0; /* Reduced padding */
+  font-size: 0.9rem; /* Smaller text */
+  text-align: center;
+  background-color: #f8f9fa; /* Same background as the page */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #2c3e50;
+  color: white;
+  padding-top: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.sidebar .sidebar-item {
+  padding: 15px 20px;
+  transition: background-color 0.3s;
+}
+
+.sidebar .sidebar-item:hover {
+  background-color: #34495e;
+}
+
+.sidebar .sidebar-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .sidebar-link i {
+  margin-right: 10px;
+  font-size: 1.3rem;
+}
+
+.sidebar .sidebar-link.active {
+  background-color: #1abc9c;
+}
+
+.sidebar .sidebar-link.active i {
+  color: white;
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+}
+
+.ml-0 {
+  margin-left: 0 !important;
+}
+
+.ml-250 {
+  margin-left: 250px !important;
+}
+
+/* Registration Page Styling */
+
+/* Card Styling */
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Form Styling */
+.form-group label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.form-control {
+  border-radius: 5px;
+  height: 45px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+}
+
+/* Button Styling */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Text Link Styling */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+    /* Make sure the inputs are visible and clickable */
+input[type="file"] {
+  margin-top: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+label {
+  margin-top: 10px;
+  display: block;
+}
