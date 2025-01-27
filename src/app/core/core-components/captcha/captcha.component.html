@@ -1,0 +1,16 @@
+<div class="captcha-container">
+    <h5 class="mx-1">
+      What is <strong>{{ num1 }}</strong> + <strong>{{ num2 }}</strong>?
+    </h5>
+    <div class="input-group">
+      <input
+        type="number"
+        [(ngModel)]="userAnswer"
+        class="form-control"
+        placeholder="Your answer"
+        (change)="validateCaptcha()"
+      />
+    
+    </div>
+  </div>
+  

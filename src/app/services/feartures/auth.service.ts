@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService  {
 
   CONTEXT = 'Authentication/'
-  API_URL = `${environment.BASEL_URL}${this.CONTEXT}`
+  API_URL = `${environment.BASE_URL}${this.CONTEXT}`
   constructor(private _http:HttpClient) { }
 
 
@@ -19,4 +19,13 @@ export class AuthService {
     return this._http.post(this.API_URL+"register",payload)
 
   }
+  inviteUser(payload:any){
+    return this._http.post(this.API_URL+"send-invite",payload)
+
+  }
+
+  getInvitationDetails(id:string){
+    return this._http.get(this.API_URL+"get-invite?code="+id,)
+  }
+  
 }

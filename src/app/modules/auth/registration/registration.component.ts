@@ -1,49 +1,85 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+  import { Component } from '@angular/core';
+  import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+  import { AuthService } from '../../../services/feartures/auth.service';
+  import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+  import { CommonService } from '../../../core/helpers/common.service';
+  import { HttpErrorResponse } from '@angular/common/http';
+  import { switchMap } from 'rxjs';
+  import { SessionHelperService } from '../../../core/helpers/session-helper.service';
+  import { AuthenticationService } from '../../../services/api';
+  import { login, LoginComponent } from '../login/login.component';
 
-@Component({
-  selector: 'app-registration',
-  standalone: false,
+  @Component({
+    selector: 'app-registration',
+    standalone: false,
 
-  templateUrl: './registration.component.html',
-  styleUrl: './registration.component.css'
-})
-export class RegistrationComponent {
-  registrationForm: FormGroup;
+    templateUrl: './registration.component.html',
+    styleUrl: './registration.component.css'
+  })
+  export class RegistrationComponent {
+    registrationForm: FormGroup;
+    objInvitation: any;
+    invitationCode: string;
 
-  constructor(private fb: FormBuilder, private _auth: AuthService,private _router:Router) { }
+    constructor(private _session:SessionHelperService,private _activateRoute: ActivatedRoute, private fb: FormBuilder, private _auth: AuthenticationService, private _router: Router, private _common: CommonService) { }
 
-  ngOnInit(): void {
-    this.registrationForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
-  }
+    ngOnInit(): void {
+      this.invitationCode = this._activateRoute.snapshot.paramMap.get('code')
+      this.getInvitationDetails(this.invitationCode)
+      this.registrationForm = this.fb.group({
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+      });
+    
+    }
 
-  // Common getter function for form controls
-  getControl(controlName: string) {
-    return this.registrationForm.get(controlName);
-  }
-
-  onSubmit() {
-    if (this.registrationForm.valid) {
-      this._auth.register(this.registrationForm.value).subscribe({
+    getInvitationDetails(id: string) {
+      this._auth.getInvite(id.toLocaleLowerCase()).subscribe({
         next: (resp: any) => {
-          if(resp){
-            alert("Registration Successfull");
-            this._router.navigateByUrl("auth/login")
-          }
+          this.registrationForm.patchValue(resp.data)
+          this.objInvitation = resp.data;
         },
-        error: (error: any) => {
-          alert("Oops!! Something Went Wrong.")
+        error: (error: HttpErrorResponse) => {
+          //alert(error.error.message);
+          // this._router.navigateByUrl("/auth/login")
         }
       })
     }
-    else {
-      this.registrationForm.markAllAsTouched()
+
+    // Common getter function for form controls
+    getControl(controlName: string) {
+      return this.registrationForm.get(controlName);
     }
+
+    onSubmit() {
+      if (this.registrationForm.valid) {
+        let payload = {
+          ...this.registrationForm.value, 
+          email: this.objInvitation.email, // Add email from objInvitation
+          name: this.objInvitation.name  ,// Add name from objInvitation
+          invitationId:this.invitationCode
+        };
+        this._auth.register(payload)
+        .subscribe({
+          next: (resp: any) => {
+            if (resp) {
+              const payload = {
+                email: this.objInvitation.email,
+                password:this.registrationForm.value.password
+              }
+              login(payload,this._auth,this._session,this._router)
+            }
+          },
+          error: (error: any) => {
+          
+          }
+        })
+      }
+      else {
+        this.registrationForm.markAllAsTouched()
+      }
+    }
+
+ 
   }
-}

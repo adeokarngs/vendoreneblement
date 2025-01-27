@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './authenticated-layout.component.css'
 })
 export class AuthenticatedLayoutComponent {
+  isSidebarCollapsed = false;
 
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
 }

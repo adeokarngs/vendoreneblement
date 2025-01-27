@@ -1,0 +1,38 @@
+<div class="container mt-3">
+    <div class="file-upload">
+
+
+        <!-- File input field inside a Bootstrap card -->
+        <div class="card mb-3" *ngIf="!control.value" (click)="file.click()">
+            <div class="card-body">
+                <div class="d-flex justify-content-between text-center">
+                    <strong > Upload File</strong>
+                    <input hidden #file type="file" class="form-control" (change)="onFileChange($event)"
+                        [disabled]="control.value" />
+                    
+                </div>
+                <div *ngIf="control.hasError('invalidFileType')" class="text-danger mt-2">
+                    Invalid file type. Only JPEG and PNG files are allowed.
+                </div>
+                <div *ngIf="control.hasError('fileTooLarge')" class="text-danger mt-2">
+                    File size should not exceed {{ maxSizeMB }}MB.
+                </div>
+            </div>
+        </div>
+
+        <!-- File upload progress or error message -->
+        <div *ngIf="uploading" class="text-info mt-2">Uploading...</div>
+        <div *ngIf="uploadError" class="text-danger mt-2">Upload failed. Please try again.</div>
+
+        <!-- File uploaded preview card -->
+        <div *ngIf="control.value" class="card mt-3">
+            <div class="card-body">
+                <a class="text-danger" (click)="onDelete()">Delete File</a>
+                <p class="card-title truncate">{{uploadedFile?.fileName}}</p>
+                <!-- <p class="card-text">File uploaded successfully!</p> -->
+                <!-- The delete button is now inside the card header for a cleaner design -->
+                
+            </div>
+        </div>
+    </div>
+</div>

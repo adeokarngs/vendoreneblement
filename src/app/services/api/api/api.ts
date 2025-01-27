@@ -1,0 +1,15 @@
+export * from './authentication.service';
+import { AuthenticationService } from './authentication.service';
+export * from './brandIdentity.service';
+import { BrandIdentityService } from './brandIdentity.service';
+export * from './files.service';
+import { FilesService } from './files.service';
+export * from './guidelines.service';
+import { GuidelinesService } from './guidelines.service';
+export * from './master.service';
+import { MasterService } from './master.service';
+export * from './video.service';
+import { VideoService } from './video.service';
+export * from './weatherForecast.service';
+import { WeatherForecastService } from './weatherForecast.service';
+export const APIS = [AuthenticationService, BrandIdentityService, FilesService, GuidelinesService, MasterService, VideoService, WeatherForecastService];

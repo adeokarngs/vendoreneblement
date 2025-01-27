@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SessionHelperService } from './core/helpers/session-helper.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-root',
@@ -12,12 +14,12 @@ export class AppComponent {
   /**
    *
    */
-  constructor(private _session:SessionHelperService) {
-    
-    
+  constructor(private _session: SessionHelperService, private toastr: ToastrService) {
+
+
   }
-  ngOnInit(){
-    this._session.checkSessionPersistence()
+  ngOnInit() {
+    // this._session.checkSessionPersistence()
   }
 
 }
