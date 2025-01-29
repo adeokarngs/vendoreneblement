@@ -1,0 +1,18 @@
+<ngx-datatable
+  class="bootstrap"
+  [rows]="rows"
+  [columns]="columns"
+  [loadingIndicator]="loading"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [scrollbarH]="true"
+  [count]="totalRecords"
+  [limit]="pageSize"
+  [offset]="pageNumber - 1"
+  [externalPaging]="true"
+  [externalSorting]="true"
+  (sort)="onSort($event)"
+  (page)="onPage($event)"
+>

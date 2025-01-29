@@ -1,0 +1,256 @@
+<h3>Vendor Validation form</h3>
+<span> <strong class="text-danger">*</strong> Marked fields are mandatory to be filled </span>
+<form [formGroup]="vendorForm" (ngSubmit)="onSubmit()">
+    <!-- Email ID with validation -->
+    <div class="form-group">
+        <label for="emailId">Email ID <span class="text-danger">*</span></label>
+        <input id="emailId" formControlName="emailId" class="form-control" type="email" />
+        <div *ngIf="f.emailId.invalid && f.emailId.touched" class="text-danger">
+            <div *ngIf="f.emailId.errors?.required">Email is required.</div>
+            <div *ngIf="f.emailId.errors?.email">Invalid email address.</div>
+        </div>
+    </div>
+
+    <!-- Vendor Name with required validation -->
+    <div class="form-group">
+        <label for="vendorName">Vendor Name <span class="text-danger">*</span></label>
+        <input id="vendorName" formControlName="vendorName" class="form-control" minlength="3" maxlength="100" />
+        <div *ngIf="f.vendorName.invalid && f.vendorName.touched" class="text-danger">
+            <div *ngIf="f.vendorName.errors?.required">Vendor Name is required.</div>
+            <div *ngIf="f.vendorName.errors?.minlength">Vendor Name must be at least 3 characters.</div>
+            <div *ngIf="f.vendorName.errors?.maxlength">Vendor Name cannot be more than 100 characters.</div>
+        </div>
+    </div>
+
+    <!-- Company Name with minimum length validation -->
+    <div class="form-group">
+        <label for="companyName">Company Name <span class="text-danger">*</span></label>
+        <input id="companyName" formControlName="companyName" class="form-control" minlength="3" maxlength="150" />
+        <div *ngIf="f.companyName.invalid && f.companyName.touched" class="text-danger">
+            <div *ngIf="f.companyName.errors?.required">Company Name is required.</div>
+            <div *ngIf="f.companyName.errors?.minlength">Company Name must be at least 3 characters.</div>
+            <div *ngIf="f.companyName.errors?.maxlength">Company Name cannot be more than 150 characters.</div>
+        </div>
+    </div>
+
+    <!-- Country with required validation -->
+    <div class="form-group">
+        <label for="country">Country <span class="text-danger">*</span></label>
+        <input id="country" formControlName="country" class="form-control" minlength="2" maxlength="50" />
+        <div *ngIf="f.country.invalid && f.country.touched" class="text-danger">
+            <div *ngIf="f.country.errors?.required">Country is required.</div>
+            <div *ngIf="f.country.errors?.minlength">Country must be at least 2 characters.</div>
+            <div *ngIf="f.country.errors?.maxlength">Country cannot be more than 50 characters.</div>
+        </div>
+    </div>
+
+    <!-- Company Address with required validation -->
+    <div class="form-group">
+        <label for="companyAddress">Company Address <span class="text-danger">*</span></label>
+        <input id="companyAddress" formControlName="companyAddress" class="form-control" minlength="10" maxlength="200" />
+        <div *ngIf="f.companyAddress.invalid && f.companyAddress.touched" class="text-danger">
+            <div *ngIf="f.companyAddress.errors?.required">Company Address with PIN CODE is required.</div>
+            <div *ngIf="f.companyAddress.errors?.minlength">Address must be at least 10 characters.</div>
+            <div *ngIf="f.companyAddress.errors?.maxlength">Address cannot be more than 200 characters.</div>
+        </div>
+    </div>
+
+    <!-- CIN / LLPIN with required validation -->
+    <div class="form-group">
+        <label for="cinLlpIn">CIN / LLPIN <span class="text-danger">*</span></label>
+        <input id="cinLlpIn" formControlName="cinLlpIn" class="form-control" minlength="5" maxlength="20" />
+        <div *ngIf="f.cinLlpIn.invalid && f.cinLlpIn.touched" class="text-danger">
+            <div *ngIf="f.cinLlpIn.errors?.required">CIN / LLPIN is required.</div>
+            <div *ngIf="f.cinLlpIn.errors?.minlength">CIN / LLPIN must be at least 5 characters.</div>
+            <div *ngIf="f.cinLlpIn.errors?.maxlength">CIN / LLPIN cannot be more than 20 characters.</div>
+        </div>
+    </div>
+
+    <!-- Constitution of Business with required validation -->
+    <div class="form-group">
+        <label for="constitutionOfBusinessRid">Constitution of Business <span class="text-danger">*</span></label>
+        <select formControlName="constitutionOfBusinessRid" class="form-control" name="constitutionOfBusinessRid" id="constitutionOfBusinessRid">
+            <option *ngFor="let item of constitutionOfBusiness" [value]="item.id">{{item.value}}</option>
+        </select>
+        <div *ngIf="f.constitutionOfBusinessRid.invalid && f.constitutionOfBusinessRid.touched" class="text-danger">
+            Constitution of Business is required.
+        </div>
+    </div>
+
+    <!-- Company Established with required validation -->
+    <div class="form-group">
+        <label for="companyEstablished">Company Established <span class="text-danger">*</span></label>
+        <input id="companyEstablished" formControlName="companyEstablished" class="form-control" type="date" />
+        <div *ngIf="f.companyEstablished.invalid && f.companyEstablished.touched" class="text-danger">
+            Company Established is required.
+        </div>
+    </div>
+
+    <!-- Company Incorporation Number & Certificate with required validation -->
+    <div class="form-group">
+        <label for="companyIncorporationNumberAndCertificate">Company Incorporation Number & Certificate <span class="text-danger">*</span></label>
+        <input id="companyIncorporationNumberAndCertificate" formControlName="companyIncorporationNumberAndCertificate" class="form-control" />
+        <div *ngIf="f.companyIncorporationNumberAndCertificate.invalid && f.companyIncorporationNumberAndCertificate.touched" class="text-danger">
+            Company incorporation number & certificate is required.
+        </div>
+    </div>
+
+    <!-- PAN Card File with required validation -->
+    <div class="form-group">
+        <label for="panCardFile">PAN Card File <span class="text-danger">*</span></label>
+        <input id="panCardFile" formControlName="panCardFile" class="form-control" />
+        <div *ngIf="f.panCardFile.invalid && f.panCardFile.touched" class="text-danger">
+            Please upload a PAN card (company).
+        </div>
+    </div>
+
+    <!-- MSME Number with required validation -->
+    <div class="form-group">
+        <label for="msmeNumber">MSME Number <span class="text-danger">*</span></label>
+        <input id="msmeNumber" formControlName="msmeNumber" class="form-control" />
+        <div *ngIf="f.msmeNumber.invalid && f.msmeNumber.touched" class="text-danger">
+            MSME number is required.
+        </div>
+    </div>
+
+    <!-- GSTIN / Tax ID with required validation -->
+    <div class="form-group">
+        <label for="gstinOrTaxId">GSTIN / Tax ID <span class="text-danger">*</span></label>
+        <input id="gstinOrTaxId" formControlName="gstinOrTaxId" class="form-control" />
+        <div *ngIf="f.gstinOrTaxId.invalid && f.gstinOrTaxId.touched" class="text-danger">
+            GSTIN / Other Tax Identification Number is required.
+        </div>
+    </div>
+
+    <!-- SEZ Entity Details with required validation -->
+    <div class="form-group">
+        <label for="sezEntityDetails">SEZ Entity Details <span class="text-danger">*</span></label>
+        <input id="sezEntityDetails" formControlName="sezEntityDetails" class="form-control" />
+        <div *ngIf="f.sezEntityDetails.invalid && f.sezEntityDetails.touched" class="text-danger">
+            SEZ Entity/Other Special Entity details are required.
+        </div>
+    </div>
+
+    <!-- GST Billing Address with required validation -->
+    <div class="form-group">
+        <label for="gstBillingAddress">GST Billing Address <span class="text-danger">*</span></label>
+        <input id="gstBillingAddress" formControlName="gstBillingAddress" class="form-control" />
+        <div *ngIf="f.gstBillingAddress.invalid && f.gstBillingAddress.touched" class="text-danger">
+            GST Billing Address is required.
+        </div>
+    </div>
+
+    <!-- GST Filing Frequency with required validation -->
+    <div class="form-group">
+        <label for="gstFilingFrequencyRid">GST Filing Frequency <span class="text-danger">*</span></label>
+        <select formControlName="gstFilingFrequencyRid" class="form-control" name="gstFilingFrequencyRid" id="gstFilingFrequencyRid">
+            <option *ngFor="let item of gstFiling" [value]="item.id">{{item.value}}</option>
+        </select>
+        <div *ngIf="f.gstFilingFrequencyRid.invalid && f.gstFilingFrequencyRid.touched" class="text-danger">
+            GST Filing Frequency is required.
+        </div>
+    </div>
+
+    <!-- LinkedIn Profile with required validation -->
+    <div class="form-group">
+        <label for="linkedinProfile">LinkedIn Profile <span class="text-danger">*</span></label>
+        <input id="linkedinProfile" formControlName="linkedinProfile" class="form-control" />
+        <div *ngIf="f.linkedinProfile.invalid && f.linkedinProfile.touched" class="text-danger">
+            Company LinkedIn Profile is required.
+        </div>
+    </div>
+
+    <!-- Company Website with required validation -->
+    <div class="form-group">
+        <label for="companyWebsite">Company Website <span class="text-danger">*</span></label>
+        <input id="companyWebsite" formControlName="companyWebsite" class="form-control" />
+        <div *ngIf="f.companyWebsite.invalid && f.companyWebsite.touched" class="text-danger">
+            Company Website is required.
+        </div>
+    </div>
+
+    <!-- Team Size with required and numeric validation -->
+    <div class="form-group">
+        <label for="teamSize">Team Size <span class="text-danger">*</span></label>
+        <input id="teamSize" formControlName="teamSize" class="form-control" type="number" min="1" max="10000" />
+        <div *ngIf="f.teamSize.invalid && f.teamSize.touched" class="text-danger">
+            Team size is required and must be a number between 1 and 10,000.
+        </div>
+    </div>
+
+    <!-- Assistance Details with required validation -->
+    <div class="form-group">
+        <label for="assistanceDetailsRid">How You Can Assist Us? <span class="text-danger">*</span></label>
+        <select formControlName="assistanceDetailsRid" class="form-control" name="assistanceDetailsRid" id="assistanceDetailsRid">
+            <option *ngFor="let item of help" [value]="item.id">{{item.value}}</option>
+        </select>
+        <div *ngIf="f.assistanceDetailsRid.invalid && f.assistanceDetailsRid.touched" class="text-danger">
+            Assistance Details are required.
+        </div>
+    </div>
+
+    <!-- Relocation States with required validation -->
+    <div class="form-group">
+        <label for="relocationStates">Preferred Relocation States <span class="text-danger">*</span></label>
+        <textarea id="relocationStates" formControlName="relocationStates" class="form-control" minlength="5" maxlength="500"></textarea>
+        <div *ngIf="f.relocationStates.invalid && f.relocationStates.touched" class="text-danger">
+            <div *ngIf="f.relocationStates.errors?.required">Preferred relocation states are required.</div>
+            <div *ngIf="f.relocationStates.errors?.minlength">Relocation states must be at least 5 characters long.</div>
+            <div *ngIf="f.relocationStates.errors?.maxlength">Relocation states cannot be more than 500 characters long.</div>
+        </div>
+    </div>
+
+    <!-- Vendor Contact Number with pattern validation -->
+    <div class="form-group">
+        <label for="vendorContactNumber">Vendor Contact Number <span class="text-danger">*</span></label>
+        <input id="vendorContactNumber" formControlName="vendorContactNumber" class="form-control"
+               pattern="^\+?[1-9]\d{1,14}$" />
+        <div *ngIf="f.vendorContactNumber.invalid && f.vendorContactNumber.touched" class="text-danger">
+            <div *ngIf="f.vendorContactNumber.errors?.required">Vendor contact number is required.</div>
+            <div *ngIf="f.vendorContactNumber.errors?.pattern">Invalid phone number format.</div>
+        </div>
+    </div>
+
+    <!-- Alternative Contact Information -->
+    <div class="form-group">
+        <label for="alternativeContactPointName">Alternative Contact Point Name</label>
+        <input id="alternativeContactPointName" formControlName="alternativeContactPointName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="alternativeContactNumber">Alternative Contact Number</label>
+        <input id="alternativeContactNumber" formControlName="alternativeContactNumber" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="alternativeContactEmail">Alternative Contact Email</label>
+        <input id="alternativeContactEmail" formControlName="alternativeContactEmail" class="form-control" />
+    </div>
+
+    <!-- Quarterly Revenue -->
+    <div class="form-group">
+        <label for="quarterlyRevenue">Quarterly Revenue</label>
+        <input id="quarterlyRevenue" formControlName="quarterlyRevenue" class="form-control" type="number" min="10000" />
+    </div>
+
+    <!-- Background Verification -->
+    <div class="form-group">
+        <label for="openToBackgroundVerificationRid">Are you open to conducting background verification checks for candidates? <span class="text-danger">*</span></label>
+        <select formControlName="openToBackgroundVerificationRid" class="form-control" name="openToBackgroundVerificationRid" id="openToBackgroundVerificationRid">
+            <option *ngFor="let item of yesNo" [value]="item.id">{{item.value}}</option>
+        </select>
+    </div>
+
+    <!-- Previous Involvement -->
+    <div class="form-group">
+        <label for="previousInvolvementWithUsRid">Have you had any previous involvement with NGenious Solutions? <span class="text-danger">*</span></label>
+        <select formControlName="previousInvolvementWithUsRid" class="form-control" name="previousInvolvementWithUsRid" id="previousInvolvementWithUsRid">
+            <option *ngFor="let item of yesNo" [value]="item.id">{{item.value}}</option>
+        </select>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+</form>

@@ -27,6 +27,16 @@
                   <div *ngIf="getControl('email').errors['email']">Please enter a valid email.</div>
                 </div>
               </div>
+
+              <div class="form-group">
+                <label for="roleId">Role</label>
+                <input type="roleId" class="form-control" id="roleId" formControlName="roleId" placeholder="Enter your roleId" required readonly>
+                <div *ngIf="getControl('roleId').invalid && (getControl('roleId').dirty || getControl('roleId').touched)" class="text-danger">
+                  <div *ngIf="getControl('roleId').errors['required']">Password is required.</div>
+                  <div *ngIf="getControl('roleId').errors['minlength']">Password must be at least 6 characters long.</div>
+                </div>
+              </div>
+  
   
               <!-- Password Input -->
               <div class="form-group">

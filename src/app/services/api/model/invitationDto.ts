@@ -12,5 +12,6 @@
 export interface InvitationDto { 
     name?: string | null;
     email?: string | null;
+    roleId?: number;
 }
 

@@ -4,16 +4,20 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserDasboardComponent } from './user-dasboard/user-dasboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VendorDetailsComponent } from './vendor-details/vendor-details.component';
 
 
 @NgModule({
   declarations: [
     UserProfileComponent,
-    UserDasboardComponent
+    UserDasboardComponent,
+    VendorDetailsComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    ReactiveFormsModule,FormsModule
   ]
 })
 export class UserModule { }

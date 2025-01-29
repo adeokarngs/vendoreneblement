@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionHelperService } from '../../../core/helpers/session-helper.service';
 import { AuthenticationService } from '../../../services/api';
+import { MenuService } from '../../../core/helpers/menu.service';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,15 @@ export class LoginComponent {
 
   loginForm: FormGroup;
   isCaptchaValid: boolean = false;
-  constructor(private _fb: FormBuilder, private _auth: AuthenticationService, private _router: Router, private _session: SessionHelperService) {
+  constructor(private _menu:MenuService,private _fb: FormBuilder, private _auth: AuthenticationService, private _router: Router, private _session: SessionHelperService) {
 
   }
   ngOnInit() {
     this.intiailizeForm()
-    this._session.checkSessionPersistence()
+    if(this._session.checkSessionPersistence())
+    {
+      this._router.navigate(['/dashboard'])
+    }
   }
 
   intiailizeForm() {
@@ -34,7 +38,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       if (this.isCaptchaValid) {
-        login(this.loginForm.value, this._auth, this._session, this._router)
+        login(this.loginForm.value, this._auth, this._session, this._router,this._menu)
       }
       else {
         alert("Please enter the captcha.")
@@ -51,13 +55,15 @@ export class LoginComponent {
   }
 
 }
-export function login(payload: any, _auth: AuthenticationService, _session: SessionHelperService, _router: Router) {
+export function login(payload: any, _auth: AuthenticationService, _session: SessionHelperService, _router: Router,_menu:MenuService) {
   return _auth.login(payload).subscribe({
     next: (resp: any) => {
       if (resp) {
         if (_session.setSession(resp.data)) {
-          _router.navigate(['/user/user-dashboard'])
+          
+          _router.navigate(['/dashboard'])
         }
+        _menu.getMenu()
       }
     }
   });

@@ -8,6 +8,8 @@
  * Do not edit the class manually.
  */
 import { Role } from './role';
+import { VendorDetails } from './vendorDetails';
+import { Consultant } from './consultant';
 
 
 export interface User { 
@@ -20,5 +22,7 @@ export interface User {
     password: string;
     roleId?: number;
     role?: Role;
+    vendor?: VendorDetails;
+    consultant?: Consultant;
 }
 

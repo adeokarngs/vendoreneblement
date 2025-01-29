@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { SessionHelperService } from './core/helpers/session-helper.service';
 import { ToastrService } from 'ngx-toastr';
+import { MenuService } from './core/helpers/menu.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,12 +16,15 @@ export class AppComponent {
   /**
    *
    */
-  constructor(private _session: SessionHelperService, private toastr: ToastrService) {
+  constructor(private _router:Router,private _session: SessionHelperService, private toastr: ToastrService,private _menu:MenuService) {
 
 
   }
   ngOnInit() {
-    // this._session.checkSessionPersistence()
+    if(this._session.checkSessionPersistence()){
+      this._menu.getMenu();
+    }
+    
   }
 
 }

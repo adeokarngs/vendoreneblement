@@ -1,487 +1,867 @@
 {
-    "openapi": "3.0.1",
-    "info": {
-      "title": "VendorEnablement",
-      "version": "1.0"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "VendorEnablement",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Authentication/test": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "test",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     },
-    "paths": {
-      "/api/Authentication/test": {
-        "get": {
-          "tags": [
-            "Authentication"
-          ],
-          "operationId": "test",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Authentication/login": {
-        "post": {
-          "tags": [
-            "Authentication"
-          ],
-          "operationId": "login",
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Authentication/register": {
-        "post": {
-          "tags": [
-            "Authentication"
-          ],
-          "operationId": "register",
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Authentication/send-invite": {
-        "post": {
-          "tags": [
-            "Authentication"
-          ],
-          "operationId": "send-invite",
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InvitationDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InvitationDto"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InvitationDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Authentication/get-invite": {
-        "get": {
-          "tags": [
-            "Authentication"
-          ],
-          "operationId": "get-invite",
-          "parameters": [
-            {
-              "name": "code",
-              "in": "query",
+    "/api/Authentication/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/LoginRequest"
               }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/BrandIdentity": {
-        "get": {
-          "tags": [
-            "BrandIdentity"
-          ],
-          "operationId": "BrandIdentityList",
-          "responses": {
-            "200": {
-              "description": "OK"
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
             }
           }
         },
-        "post": {
-          "tags": [
-            "BrandIdentity"
-          ],
-          "operationId": "BrandIdentityAdd",
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrandIdentity"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrandIdentity"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrandIdentity"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
-      },
-      "/api/BrandIdentity/{id}": {
-        "get": {
-          "tags": [
-            "BrandIdentity"
-          ],
-          "operationId": "BrandIdentityById",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
+      }
+    },
+    "/api/Authentication/register": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
+                "$ref": "#/components/schemas/RegistrationDto"
               }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationDto"
+              }
             }
           }
         },
-        "put": {
-          "tags": [
-            "BrandIdentity"
-          ],
-          "operationId": "BrandIdentityUpdate",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Authentication/send-invite": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "send-invite",
+        "requestBody": {
+          "content": {
+            "application/json": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
+                "$ref": "#/components/schemas/InvitationDto"
               }
-            }
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrandIdentity"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrandIdentity"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrandIdentity"
-                }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvitationDto"
               }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvitationDto"
+              }
             }
           }
         },
-        "delete": {
-          "tags": [
-            "BrandIdentity"
-          ],
-          "operationId": "BrandIdentityDelete",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
-      },
-      "/api/Files/getfile": {
-        "get": {
-          "tags": [
-            "Files"
-          ],
-          "parameters": [
-            {
-              "name": "fid",
-              "in": "query",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
+      }
+    },
+    "/api/Authentication/get-invite": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "get-invite",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
         }
-      },
-      "/api/Files/upload": {
-        "post": {
-          "tags": [
-            "Files"
-          ],
-          "requestBody": {
-            "content": {
-              "multipart/form-data": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "file": {
-                      "type": "string",
-                      "format": "binary"
-                    }
-                  }
-                },
-                "encoding": {
+      }
+    },
+    "/api/Files/getfile": {
+      "get": {
+        "tags": [
+          "Files"
+        ],
+        "parameters": [
+          {
+            "name": "fid",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Files/upload": {
+      "post": {
+        "tags": [
+          "Files"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
                   "file": {
-                    "style": "form"
+                    "type": "string",
+                    "format": "binary"
                   }
                 }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
               }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Files/downloadFile": {
-        "get": {
-          "tags": [
-            "Files"
-          ],
-          "parameters": [
-            {
-              "name": "fid",
-              "in": "query",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Guidelines": {
-        "get": {
-          "tags": [
-            "Guidelines"
-          ],
-          "operationId": "GuidelinesList",
-          "responses": {
-            "200": {
-              "description": "OK"
             }
           }
         },
-        "post": {
-          "tags": [
-            "Guidelines"
-          ],
-          "operationId": "GuidelinesAdd",
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guideline"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guideline"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guideline"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
-      },
-      "/api/Guidelines/{id}": {
-        "get": {
-          "tags": [
-            "Guidelines"
-          ],
-          "operationId": "GuidelinesById",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
+      }
+    },
+    "/api/Files/downloadFile": {
+      "get": {
+        "tags": [
+          "Files"
+        ],
+        "parameters": [
+          {
+            "name": "fid",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Master/get-by-type": {
+      "post": {
+        "tags": [
+          "Master"
+        ],
+        "operationId": "getByType",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
             }
           }
         },
-        "put": {
-          "tags": [
-            "Guidelines"
-          ],
-          "operationId": "GuidelinesUpdate",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guideline"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guideline"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guideline"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Master/get-by-parent-id": {
+      "post": {
+        "tags": [
+          "Master"
+        ],
+        "operationId": "getByParentId",
+        "parameters": [
+          {
+            "name": "parentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
-        },
-        "delete": {
-          "tags": [
-            "Guidelines"
-          ],
-          "operationId": "GuidelinesDelete",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Master": {
+      "get": {
+        "tags": [
+          "Master"
+        ],
+        "operationId": "MasterList",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       },
-      "/api/Master/get-by-type": {
-        "post": {
-          "tags": [
-            "Master"
-          ],
-          "requestBody": {
+      "post": {
+        "tags": [
+          "Master"
+        ],
+        "operationId": "MasterAdd",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Master"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Master"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Master"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Master/{id}": {
+      "get": {
+        "tags": [
+          "Master"
+        ],
+        "operationId": "MasterById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Master"
+        ],
+        "operationId": "MasterUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Master"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Master"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Master"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Master"
+        ],
+        "operationId": "MasterDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Role": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "operationId": "RoleList",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "operationId": "RoleAdd",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Role/{id}": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "operationId": "RoleById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Role"
+        ],
+        "operationId": "RoleUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Role"
+        ],
+        "operationId": "RoleDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users/get-user-grid": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "get-user-grid",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sortColumn",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersList",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersAdd",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Vendor": {
+      "get": {
+        "tags": [
+          "Vendor"
+        ],
+        "operationId": "VendorList",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Vendor"
+        ],
+        "operationId": "VendorAdd",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendorDetails"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendorDetails"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendorDetails"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Vendor/{id}": {
+      "get": {
+        "tags": [
+          "Vendor"
+        ],
+        "operationId": "VendorById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Vendor"
+        ],
+        "operationId": "VendorUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendorDetails"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendorDetails"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendorDetails"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Vendor"
+        ],
+        "operationId": "VendorDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
             "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/WeatherForecast"
                   }
                 }
               },
@@ -489,680 +869,666 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
+                    "$ref": "#/components/schemas/WeatherForecast"
                   }
                 }
               }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Master/get-by-parent-id": {
-        "post": {
-          "tags": [
-            "Master"
-          ],
-          "parameters": [
-            {
-              "name": "parentId",
-              "in": "query",
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Master": {
-        "get": {
-          "tags": [
-            "Master"
-          ],
-          "operationId": "MasterList",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        },
-        "post": {
-          "tags": [
-            "Master"
-          ],
-          "operationId": "MasterAdd",
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Master"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Master"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Master"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Master/{id}": {
-        "get": {
-          "tags": [
-            "Master"
-          ],
-          "operationId": "MasterById",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        },
-        "put": {
-          "tags": [
-            "Master"
-          ],
-          "operationId": "MasterUpdate",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Master"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Master"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Master"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        },
-        "delete": {
-          "tags": [
-            "Master"
-          ],
-          "operationId": "MasterDelete",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Video": {
-        "get": {
-          "tags": [
-            "Video"
-          ],
-          "operationId": "VideoList",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        },
-        "post": {
-          "tags": [
-            "Video"
-          ],
-          "operationId": "VideoAdd",
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Video"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Video"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Video"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/api/Video/{id}": {
-        "get": {
-          "tags": [
-            "Video"
-          ],
-          "operationId": "VideoById",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        },
-        "put": {
-          "tags": [
-            "Video"
-          ],
-          "operationId": "VideoUpdate",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Video"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Video"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Video"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        },
-        "delete": {
-          "tags": [
-            "Video"
-          ],
-          "operationId": "VideoDelete",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
-      },
-      "/WeatherForecast": {
-        "get": {
-          "tags": [
-            "WeatherForecast"
-          ],
-          "operationId": "GetWeatherForecast",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/WeatherForecast"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/WeatherForecast"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/WeatherForecast"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/WeatherForecast/search": {
-        "get": {
-          "tags": [
-            "WeatherForecast"
-          ],
-          "parameters": [
-            {
-              "name": "query",
-              "in": "query",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
             }
           }
         }
       }
     },
-    "components": {
-      "schemas": {
-        "BrandIdentity": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "createdBy": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "updatedBy": {
-              "type": "integer",
-              "format": "int32",
-              "nullable": true
-            },
-            "createdDate": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "udpatedDate": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            },
-            "brandName": {
-              "type": "string",
-              "nullable": true
-            },
-            "brandDescription": {
-              "type": "string",
-              "nullable": true
-            },
-            "brandLogofid": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "Guideline": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "createdBy": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "updatedBy": {
-              "type": "integer",
-              "format": "int32",
-              "nullable": true
-            },
-            "createdDate": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "udpatedDate": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            },
-            "guideLineName": {
-              "type": "string",
-              "nullable": true
-            },
-            "guideLineDescription": {
-              "type": "string",
-              "nullable": true
-            },
-            "guideLinefid": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "InvitationDto": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "nullable": true
-            },
-            "email": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "Master": {
-          "required": [
-            "code",
-            "type",
-            "value"
-          ],
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "createdBy": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "updatedBy": {
-              "type": "integer",
-              "format": "int32",
-              "nullable": true
-            },
-            "createdDate": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "udpatedDate": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            },
-            "type": {
-              "maxLength": 55,
-              "minLength": 2,
+    "/WeatherForecast/search": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
               "type": "string"
-            },
-            "code": {
-              "maxLength": 6,
-              "minLength": 2,
-              "type": "string"
-            },
-            "value": {
-              "maxLength": 100,
-              "minLength": 2,
-              "type": "string"
-            },
-            "parentId": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "isActive": {
-              "type": "boolean"
             }
-          },
-          "additionalProperties": false
-        },
-        "Role": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "createdBy": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "updatedBy": {
-              "type": "integer",
-              "format": "int32",
-              "nullable": true
-            },
-            "createdDate": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "udpatedDate": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            },
-            "name": {
-              "type": "string",
-              "nullable": true
-            },
-            "code": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "User": {
-          "required": [
-            "email",
-            "password"
-          ],
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "createdBy": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "updatedBy": {
-              "type": "integer",
-              "format": "int32",
-              "nullable": true
-            },
-            "createdDate": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "udpatedDate": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            },
-            "email": {
-              "minLength": 1,
-              "type": "string"
-            },
-            "password": {
-              "minLength": 1,
-              "type": "string"
-            },
-            "roleId": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "role": {
-              "$ref": "#/components/schemas/Role"
-            }
-          },
-          "additionalProperties": false
-        },
-        "Video": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "createdBy": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "updatedBy": {
-              "type": "integer",
-              "format": "int32",
-              "nullable": true
-            },
-            "createdDate": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "udpatedDate": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            },
-            "videoName": {
-              "type": "string",
-              "nullable": true
-            },
-            "videoDescription": {
-              "type": "string",
-              "nullable": true
-            },
-            "videofid": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "WeatherForecast": {
-          "type": "object",
-          "properties": {
-            "date": {
-              "type": "string",
-              "format": "date"
-            },
-            "temperatureC": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "temperatureF": {
-              "type": "integer",
-              "format": "int32",
-              "readOnly": true
-            },
-            "summary": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        }
-      },
-      "securitySchemes": {
-        "Bearer": {
-          "type": "apiKey",
-          "description": "Enter 'Bearer' [space] and then your token.",
-          "name": "Authorization",
-          "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
         }
       }
     },
-    "security": [
-      {
-        "Bearer": [ ]
+    "/WeatherForecast/TEST": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
-    ]
-  }
+    },
+    "/WeatherForecast/TEST2": {
+      "post": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Consultant": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "udpatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "address": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConsultantAddress"
+            },
+            "nullable": true
+          },
+          "socialMediaAccounts": {
+            "type": "string",
+            "nullable": true
+          },
+          "alternateContact": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Contact"
+            },
+            "nullable": true
+          },
+          "isOpenForVerification": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConsultantAddress": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "udpatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "consultantId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ownerType": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressLine1": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressLine2": {
+            "type": "string",
+            "nullable": true
+          },
+          "pincode": {
+            "type": "string",
+            "nullable": true
+          },
+          "landmark": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "udpatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "phoneCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvitationDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Master": {
+        "required": [
+          "code",
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "udpatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "type": {
+            "maxLength": 55,
+            "minLength": 2,
+            "type": "string"
+          },
+          "code": {
+            "maxLength": 6,
+            "minLength": 2,
+            "type": "string"
+          },
+          "value": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "parentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegistrationDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "invitationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "udpatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "udpatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
+          },
+          "vendor": {
+            "$ref": "#/components/schemas/VendorDetails"
+          },
+          "consultant": {
+            "$ref": "#/components/schemas/Consultant"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VendorDetails": {
+        "required": [
+          "assistanceDetailsRid",
+          "cinLlpIn",
+          "companyAddress",
+          "companyEstablished",
+          "companyIncorporationNumberAndCertificate",
+          "companyName",
+          "companyWebsite",
+          "constitutionOfBusinessRid",
+          "country",
+          "emailId",
+          "gstBillingAddress",
+          "gstFilingFrequencyRid",
+          "gstinOrTaxId",
+          "linkedinProfile",
+          "msmeNumber",
+          "openToBackgroundVerificationRid",
+          "panCardFile",
+          "previousInvolvementWithUsRid",
+          "sezEntityDetails",
+          "teamSize",
+          "vendorContactNumber",
+          "vendorName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "udpatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "emailId": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "vendorName": {
+            "maxLength": 150,
+            "minLength": 1,
+            "type": "string"
+          },
+          "companyName": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "country": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "companyAddress": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "cinLlpIn": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string"
+          },
+          "constitutionOfBusinessRid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "constitutionOfBusiness": {
+            "$ref": "#/components/schemas/Master"
+          },
+          "companyEstablished": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "companyIncorporationNumberAndCertificate": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "panCardFile": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "msmeNumber": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "gstinOrTaxId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sezEntityDetails": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "gstBillingAddress": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "gstFilingFrequencyRid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gstFilingFrequency": {
+            "$ref": "#/components/schemas/Master"
+          },
+          "linkedinProfile": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "companyWebsite": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "teamSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assistanceDetailsRid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assistanceDetails": {
+            "$ref": "#/components/schemas/Master"
+          },
+          "relocationStates": {
+            "maxLength": 500,
+            "type": "string",
+            "nullable": true
+          },
+          "vendorContactNumber": {
+            "minLength": 1,
+            "type": "string",
+            "format": "tel"
+          },
+          "alternativeContactPointName": {
+            "type": "string",
+            "nullable": true
+          },
+          "alternativeContactNumber": {
+            "type": "string",
+            "format": "tel",
+            "nullable": true
+          },
+          "alternativeContactEmail": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "quarterlyRevenue": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "openToBackgroundVerificationRid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "openToBackgroundVerification": {
+            "$ref": "#/components/schemas/Master"
+          },
+          "previousInvolvementWithUsRid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "previousInvolvementWithUs": {
+            "$ref": "#/components/schemas/Master"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Enter 'Bearer' [space] and then your token.",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

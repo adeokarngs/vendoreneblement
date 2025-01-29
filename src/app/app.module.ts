@@ -1,4 +1,4 @@
-import { InjectionToken, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +17,8 @@ import { errorHandlerInterceptor } from './core/interceptors/error-handler.inter
 import { environment } from '../environments/environment.development';
 import { APIS, BASE_PATH } from './services/api';
 import { UserModule } from './modules/user/user.module';
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { CoreComponentsModule } from './core/core-components/core-components.module';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,24 @@ import { UserModule } from './modules/user/user.module';
 
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule, AuthModule,
-    AppRoutingModule, LayoutModule, NgbModule, PublicModule, AdminModule, BrowserAnimationsModule,UserModule,
-    ToastrModule.forRoot()
+    BrowserModule, FormsModule, ReactiveFormsModule, AuthModule,NgxDatatableModule,CoreComponentsModule,
+    AppRoutingModule, LayoutModule, NgbModule, PublicModule, AdminModule, BrowserAnimationsModule, UserModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      closeButton: true,
+      newestOnTop: true,
+      tapToDismiss: false,
+      iconClasses: {
+        error: 'toast-error',
+        info: 'toast-info',
+        success: 'toast-success',
+        warning: 'toast-warning',
+      },
+    }),
   ],
-
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [...APIS, { provide: BASE_PATH, useValue: environment.BASE_URL_AI }, provideHttpClient(
     withInterceptors([tokenInterceptor, errorHandlerInterceptor]),
   ), provideToastr(), provideAnimations()],

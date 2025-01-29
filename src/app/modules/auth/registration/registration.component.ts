@@ -6,8 +6,10 @@
   import { HttpErrorResponse } from '@angular/common/http';
   import { switchMap } from 'rxjs';
   import { SessionHelperService } from '../../../core/helpers/session-helper.service';
-  import { AuthenticationService } from '../../../services/api';
+  import { AuthenticationService, RoleService } from '../../../services/api';
   import { login, LoginComponent } from '../login/login.component';
+import { MenuService } from '../../../core/helpers/menu.service';
+import { RoleEnums } from '../../../core/constants/enums/RoleEnums';
 
   @Component({
     selector: 'app-registration',
@@ -21,24 +23,29 @@
     objInvitation: any;
     invitationCode: string;
 
-    constructor(private _session:SessionHelperService,private _activateRoute: ActivatedRoute, private fb: FormBuilder, private _auth: AuthenticationService, private _router: Router, private _common: CommonService) { }
+    constructor(private _role: RoleService,private _menu:MenuService,private _session:SessionHelperService,private _activateRoute: ActivatedRoute, private fb: FormBuilder, private _auth: AuthenticationService, private _router: Router, private _common: CommonService) { }
 
     ngOnInit(): void {
+    
       this.invitationCode = this._activateRoute.snapshot.paramMap.get('code')
       this.getInvitationDetails(this.invitationCode)
       this.registrationForm = this.fb.group({
         name: ['', [Validators.required, Validators.minLength(3)]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
+        roleId: ['', [Validators.required]],
       });
     
     }
 
     getInvitationDetails(id: string) {
-      this._auth.getInvite(id.toLocaleLowerCase()).subscribe({
+      this._auth.getInvite(id.toLocaleLowerCase())
+      .subscribe({
         next: (resp: any) => {
           this.registrationForm.patchValue(resp.data)
+          this.registrationForm.get("roleId").setValue(resp.data?.role?.name)
           this.objInvitation = resp.data;
+          
         },
         error: (error: HttpErrorResponse) => {
           //alert(error.error.message);
@@ -58,7 +65,8 @@
           ...this.registrationForm.value, 
           email: this.objInvitation.email, // Add email from objInvitation
           name: this.objInvitation.name  ,// Add name from objInvitation
-          invitationId:this.invitationCode
+          invitationId:this.invitationCode,
+          roleId:this.objInvitation.roleId
         };
         this._auth.register(payload)
         .subscribe({
@@ -68,7 +76,7 @@
                 email: this.objInvitation.email,
                 password:this.registrationForm.value.password
               }
-              login(payload,this._auth,this._session,this._router)
+              login(payload,this._auth,this._session,this._router,this._menu)
             }
           },
           error: (error: any) => {
