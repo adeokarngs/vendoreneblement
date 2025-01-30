@@ -1,6 +1,6 @@
 <ngx-datatable
   *ngIf="columns.length > 0"
-  class="bootstrap"
+  class="bootstrap table-bordered table-responsive"
   [rows]="rows"
   [columns]="columns"
   [loadingIndicator]="loading"
@@ -17,27 +17,59 @@
   (sort)="onSort($event)"
   (page)="onPage($event)"
 >
-  <!-- Dynamic Columns Only -->
+  <!-- Dynamic Columns -->
   <ngx-datatable-column
     *ngFor="let col of columns"
     [name]="col.name"
     [prop]="col.prop"
-    [sortable]="col.prop ? true : false"
+    [sortable]="!!col.prop"
+    [flexGrow]="col.flexGrow || 1"
+    [minWidth]="col.minWidth || 100"
   >
-    <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-      <!-- Render Custom Template -->
-      <ng-container *ngIf="col.template; else defaultContent">
-        <ng-container
-          [ngTemplateOutlet]="col.template"
-          [ngTemplateOutletContext]="{ $implicit: row }"
-        >
+    <!-- Custom Header Template -->
+    <ng-template ngx-datatable-header-template let-column="column">
+      <span class="fw-bold">
+      
+        <ng-container *ngIf="col.headerTemplate; else defaultHeader">
+          <ng-container
+            [ngTemplateOutlet]="col.headerTemplate"
+            [ngTemplateOutletContext]="{ $implicit: column }"
+          ></ng-container>
         </ng-container>
-      </ng-container>
+        <ng-template #defaultHeader>
+          <strong>{{column.name}}</strong>
+        </ng-template>
+      </span>
+    </ng-template>
 
-      <!-- Default Content -->
-      <ng-template #defaultContent>
-        {{ value }}
-      </ng-template>
+    <!-- Custom Cell Template -->
+    <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
+      <div class="cell-content">
+        <ng-container *ngIf="col.template; else defaultContent">
+          <ng-container
+            [ngTemplateOutlet]="col.template"
+            [ngTemplateOutletContext]="{
+              $implicit: row,
+              value: value,
+              column: col,
+            }"
+          >
+          </ng-container>
+        </ng-container>
+        <ng-template #defaultContent>
+          {{ value || "-" }}
+        </ng-template>
+      </div>
+    </ng-template>
+
+    <!-- Custom Footer Template -->
+    <ng-template ngx-datatable-footer-template let-column="column">
+      <div *ngIf="col.footerTemplate" class="text-muted small">
+        <ng-container
+          [ngTemplateOutlet]="col.footerTemplate"
+          [ngTemplateOutletContext]="{ $implicit: column }"
+        ></ng-container>
+      </div>
     </ng-template>
   </ngx-datatable-column>
 </ngx-datatable>

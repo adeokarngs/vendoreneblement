@@ -8,9 +8,11 @@ import { Component, Input, TemplateRef } from '@angular/core';
   templateUrl: './server-grid.component.html',
   styleUrl: './server-grid.component.css',
 })
+
 export class ServerGridComponent {
+  
   @Input() apiUrl!: string; // Backend API URL
-  @Input() columns: { name: string; prop: string,template?: TemplateRef<any>  }[] = []; // Column Config
+  @Input() columns: GridColumn[] = []; // Column Config
 
   rows: any[] = [];
   totalRecords: number = 0;
@@ -75,4 +77,13 @@ export class ServerGridComponent {
     debugger
     this.columns.filter(x=>x?.template)
   }
+}
+export interface GridColumn {
+  name: string;
+  prop?: string;
+  template?: TemplateRef<any>;
+  headerTemplate?: TemplateRef<any>;
+  footerTemplate?: TemplateRef<any>;
+  flexGrow?: number;
+  minWidth?: number;
 }
