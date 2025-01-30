@@ -7,9 +7,7 @@
   "paths": {
     "/api/Authentication/test": {
       "get": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "operationId": "test",
         "responses": {
           "200": {
@@ -20,9 +18,7 @@
     },
     "/api/Authentication/login": {
       "post": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "operationId": "login",
         "requestBody": {
           "content": {
@@ -52,9 +48,7 @@
     },
     "/api/Authentication/register": {
       "post": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "operationId": "register",
         "requestBody": {
           "content": {
@@ -84,9 +78,7 @@
     },
     "/api/Authentication/send-invite": {
       "post": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "operationId": "send-invite",
         "requestBody": {
           "content": {
@@ -116,9 +108,7 @@
     },
     "/api/Authentication/get-invite": {
       "get": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "operationId": "get-invite",
         "parameters": [
           {
@@ -138,9 +128,7 @@
     },
     "/api/Files/getfile": {
       "get": {
-        "tags": [
-          "Files"
-        ],
+        "tags": ["Files"],
         "parameters": [
           {
             "name": "fid",
@@ -159,9 +147,7 @@
     },
     "/api/Files/upload": {
       "post": {
-        "tags": [
-          "Files"
-        ],
+        "tags": ["Files"],
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -191,9 +177,7 @@
     },
     "/api/Files/downloadFile": {
       "get": {
-        "tags": [
-          "Files"
-        ],
+        "tags": ["Files"],
         "parameters": [
           {
             "name": "fid",
@@ -212,9 +196,7 @@
     },
     "/api/Master/get-by-type": {
       "post": {
-        "tags": [
-          "Master"
-        ],
+        "tags": ["Master"],
         "operationId": "getByType",
         "requestBody": {
           "content": {
@@ -253,9 +235,7 @@
     },
     "/api/Master/get-by-parent-id": {
       "post": {
-        "tags": [
-          "Master"
-        ],
+        "tags": ["Master"],
         "operationId": "getByParentId",
         "parameters": [
           {
@@ -276,9 +256,7 @@
     },
     "/api/Master": {
       "get": {
-        "tags": [
-          "Master"
-        ],
+        "tags": ["Master"],
         "operationId": "MasterList",
         "responses": {
           "200": {
@@ -287,9 +265,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Master"
-        ],
+        "tags": ["Master"],
         "operationId": "MasterAdd",
         "requestBody": {
           "content": {
@@ -319,9 +295,7 @@
     },
     "/api/Master/{id}": {
       "get": {
-        "tags": [
-          "Master"
-        ],
+        "tags": ["Master"],
         "operationId": "MasterById",
         "parameters": [
           {
@@ -341,9 +315,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Master"
-        ],
+        "tags": ["Master"],
         "operationId": "MasterUpdate",
         "parameters": [
           {
@@ -382,9 +354,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Master"
-        ],
+        "tags": ["Master"],
         "operationId": "MasterDelete",
         "parameters": [
           {
@@ -406,9 +376,7 @@
     },
     "/api/Role": {
       "get": {
-        "tags": [
-          "Role"
-        ],
+        "tags": ["Role"],
         "operationId": "RoleList",
         "responses": {
           "200": {
@@ -417,9 +385,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Role"
-        ],
+        "tags": ["Role"],
         "operationId": "RoleAdd",
         "requestBody": {
           "content": {
@@ -449,9 +415,7 @@
     },
     "/api/Role/{id}": {
       "get": {
-        "tags": [
-          "Role"
-        ],
+        "tags": ["Role"],
         "operationId": "RoleById",
         "parameters": [
           {
@@ -471,9 +435,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Role"
-        ],
+        "tags": ["Role"],
         "operationId": "RoleUpdate",
         "parameters": [
           {
@@ -512,9 +474,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Role"
-        ],
+        "tags": ["Role"],
         "operationId": "RoleDelete",
         "parameters": [
           {
@@ -536,9 +496,7 @@
     },
     "/api/Users/get-user-grid": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "operationId": "get-user-grid",
         "parameters": [
           {
@@ -581,9 +539,7 @@
     },
     "/api/Users": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "operationId": "UsersList",
         "responses": {
           "200": {
@@ -592,9 +548,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "operationId": "UsersAdd",
         "requestBody": {
           "content": {
@@ -624,9 +578,7 @@
     },
     "/api/Users/{id}": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "operationId": "UsersById",
         "parameters": [
           {
@@ -646,9 +598,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "operationId": "UsersUpdate",
         "parameters": [
           {
@@ -687,9 +637,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "operationId": "UsersDelete",
         "parameters": [
           {
@@ -711,9 +659,7 @@
     },
     "/api/Vendor": {
       "get": {
-        "tags": [
-          "Vendor"
-        ],
+        "tags": ["Vendor"],
         "operationId": "VendorList",
         "responses": {
           "200": {
@@ -722,9 +668,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Vendor"
-        ],
+        "tags": ["Vendor"],
         "operationId": "VendorAdd",
         "requestBody": {
           "content": {
@@ -754,9 +698,7 @@
     },
     "/api/Vendor/{id}": {
       "get": {
-        "tags": [
-          "Vendor"
-        ],
+        "tags": ["Vendor"],
         "operationId": "VendorById",
         "parameters": [
           {
@@ -776,9 +718,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Vendor"
-        ],
+        "tags": ["Vendor"],
         "operationId": "VendorUpdate",
         "parameters": [
           {
@@ -817,9 +757,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Vendor"
-        ],
+        "tags": ["Vendor"],
         "operationId": "VendorDelete",
         "parameters": [
           {
@@ -841,9 +779,7 @@
     },
     "/WeatherForecast": {
       "get": {
-        "tags": [
-          "WeatherForecast"
-        ],
+        "tags": ["WeatherForecast"],
         "operationId": "GetWeatherForecast",
         "responses": {
           "200": {
@@ -880,9 +816,7 @@
     },
     "/WeatherForecast/search": {
       "get": {
-        "tags": [
-          "WeatherForecast"
-        ],
+        "tags": ["WeatherForecast"],
         "parameters": [
           {
             "name": "query",
@@ -901,9 +835,7 @@
     },
     "/WeatherForecast/TEST": {
       "get": {
-        "tags": [
-          "WeatherForecast"
-        ],
+        "tags": ["WeatherForecast"],
         "parameters": [
           {
             "name": "type",
@@ -922,9 +854,7 @@
     },
     "/WeatherForecast/TEST2": {
       "post": {
-        "tags": [
-          "WeatherForecast"
-        ],
+        "tags": ["WeatherForecast"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1132,11 +1062,7 @@
         "additionalProperties": false
       },
       "Master": {
-        "required": [
-          "code",
-          "type",
-          "value"
-        ],
+        "required": ["code", "type", "value"],
         "type": "object",
         "properties": {
           "id": {
@@ -1245,10 +1171,7 @@
         "additionalProperties": false
       },
       "User": {
-        "required": [
-          "email",
-          "password"
-        ],
+        "required": ["email", "password"],
         "type": "object",
         "properties": {
           "id": {
@@ -1528,7 +1451,7 @@
   },
   "security": [
     {
-      "Bearer": [ ]
+      "Bearer": []
     }
   ]
 }

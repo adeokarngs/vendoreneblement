@@ -2,16 +2,18 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LayoutService {
-
-
-  private config = new BehaviorSubject({header:true,footer:true,sidebar:false})
+  private config = new BehaviorSubject({
+    header: true,
+    footer: true,
+    sidebar: false,
+  });
   $config = this.config.asObservable();
-  constructor() { }
+  constructor() {}
 
-  setConfig(config:any){
+  setConfig(config: any) {
     this.config.next(config);
   }
 }

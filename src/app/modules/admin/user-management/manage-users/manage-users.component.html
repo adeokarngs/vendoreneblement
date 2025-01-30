@@ -1,4 +1,7 @@
-<app-server-grid
-  [apiUrl]="url"
-  [columns]="columns"
-></app-server-grid>
+<app-server-grid [apiUrl]="url" [columns]="columns"></app-server-grid>
+
+
+<ng-template #actionTemplate let-row>
+  <i class="fa fa-pencil mx-1 text-primary" (click)="edit(row)"></i>
+  <i class="fa fa-trash-o text-danger" (click)="delete(row)"></i>
+</ng-template>

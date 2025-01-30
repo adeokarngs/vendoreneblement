@@ -4,26 +4,21 @@ import { BehaviorSubject } from 'rxjs';
 import { RoleEnums } from '../constants/enums/RoleEnums';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SessionHelperService {
-
-
-  public $isLoggedIn = new BehaviorSubject(false)
+  public $isLoggedIn = new BehaviorSubject(false);
   isLoggedIn = this.$isLoggedIn.asObservable();
-  constructor(private _router: Router) { }
-
+  constructor(private _router: Router) {}
 
   getCurrentUser() {
-    const user = localStorage.getItem("currentUser")
-    if (user)
-      return JSON.parse(user)
-    else
-      return null
+    const user = localStorage.getItem('currentUser');
+    if (user) return JSON.parse(user);
+    else return null;
   }
 
   clearSession() {
-    this.$isLoggedIn.next(false)
+    this.$isLoggedIn.next(false);
     localStorage.clear();
     sessionStorage.clear();
   }
@@ -32,7 +27,6 @@ export class SessionHelperService {
     this.$isLoggedIn.next(true);
     localStorage.setItem('currentUser', JSON.stringify(payload));
     if (this.performPostChecks(payload)) {
-
       return true; // Return true only if all checks pass
     }
 
@@ -45,16 +39,19 @@ export class SessionHelperService {
       //this._router.navigate(['/user/user-dashboard']);
       return true;
     }
-    return false
+    return false;
   }
 
   performPostChecks(payload: any): boolean {
     const roleCode = payload?.user?.role?.code;
 
-    const isProfileComplete = roleCode == RoleEnums.Consultant || roleCode == RoleEnums.Vendor ? this.checkIfProfileIsCompleted() : true;
+    const isProfileComplete =
+      roleCode == RoleEnums.Consultant || roleCode == RoleEnums.Vendor
+        ? this.checkIfProfileIsCompleted()
+        : true;
 
     // Return true only if all checks pass
-    return isProfileComplete
+    return isProfileComplete;
   }
   checkIfProfileIsCompleted(): boolean {
     const user = this.getCurrentUser()?.user;
@@ -67,9 +64,8 @@ export class SessionHelperService {
       }
     }
 
-
     return true;
   }
 
-  isProful
+  isProful;
 }

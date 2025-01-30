@@ -1,5 +1,5 @@
-export enum RoleEnums{
-    Admin = "admin",
-    Vendor = "vendor",
-    Consultant = "consultant"
+export enum RoleEnums {
+  Admin = 'admin',
+  Vendor = 'vendor',
+  Consultant = 'consultant',
 }

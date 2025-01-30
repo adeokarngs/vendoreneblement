@@ -10,18 +10,23 @@ import { RoleEnums } from '../../../../core/constants/enums/RoleEnums';
   standalone: false,
 
   templateUrl: './invite-user.component.html',
-  styleUrl: './invite-user.component.css'
+  styleUrl: './invite-user.component.css',
 })
 export class InviteUserComponent {
   registrationForm: FormGroup;
   showInvite: boolean;
   invitationLink: string;
-  lstRoles: any = []
+  lstRoles: any = [];
 
-  constructor(private fb: FormBuilder, private _auth: AuthService, private _router: Router, private _role: RoleService) { }
+  constructor(
+    private fb: FormBuilder,
+    private _auth: AuthService,
+    private _router: Router,
+    private _role: RoleService,
+  ) {}
 
   ngOnInit(): void {
-    this.loasMasters()
+    this.loasMasters();
     this.registrationForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -32,11 +37,12 @@ export class InviteUserComponent {
     this._role.roleList().subscribe({
       next: (resp: any) => {
         if (resp) {
-          this.lstRoles = resp.data.filter(x => [RoleEnums.Consultant, RoleEnums.Vendor].includes(x.code))
-
+          this.lstRoles = resp.data.filter((x) =>
+            [RoleEnums.Consultant, RoleEnums.Vendor].includes(x.code),
+          );
         }
-      }
-    })
+      },
+    });
   }
   // Common getter function for form controls
   getControl(controlName: string) {
@@ -48,27 +54,22 @@ export class InviteUserComponent {
       this._auth.inviteUser(this.registrationForm.value).subscribe({
         next: (resp: any) => {
           if (resp) {
-
-            this.registrationForm.reset()
-            this.showEmailBody(resp.data.code)
+            this.registrationForm.reset();
+            this.showEmailBody(resp.data.code);
           }
         },
-        error: (error: any) => {
-
-        }
-      })
-    }
-    else {
-      this.registrationForm.markAllAsTouched()
+        error: (error: any) => {},
+      });
+    } else {
+      this.registrationForm.markAllAsTouched();
     }
   }
   showEmailBody(code: any) {
-
-    this.showInvite = true
-    this.invitationLink = "auth/registration/" + code
+    this.showInvite = true;
+    this.invitationLink = 'auth/registration/' + code;
   }
 
   gotoRegistration() {
-    this._router.navigateByUrl(this.invitationLink)
+    this._router.navigateByUrl(this.invitationLink);
   }
 }

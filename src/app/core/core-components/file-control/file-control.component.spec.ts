@@ -8,9 +8,8 @@ describe('FileControlComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FileControlComponent]
-    })
-    .compileComponents();
+      declarations: [FileControlComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FileControlComponent);
     component = fixture.componentInstance;

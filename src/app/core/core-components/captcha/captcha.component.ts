@@ -3,9 +3,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-captcha',
   standalone: false,
-  
+
   templateUrl: './captcha.component.html',
-  styleUrl: './captcha.component.css'
+  styleUrl: './captcha.component.css',
 })
 export class CaptchaComponent {
   num1: number = 0;

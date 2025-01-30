@@ -4,11 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class GuidelinesService extends Base<any, "Guidelines"> {
-
+export class GuidelinesService extends Base<any, 'Guidelines'> {
   constructor(public override http: HttpClient) {
-    super(http, "Guidelines");
+    super(http, 'Guidelines');
   }
 }

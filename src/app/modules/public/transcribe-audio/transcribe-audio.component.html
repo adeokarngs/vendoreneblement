@@ -1,19 +1,11 @@
 <div class="container text-center mt-5">
-    <h2>Meeting Transcriber</h2>
-    <div class="btn-group mt-4">
-      <button
-        class="btn btn-primary"
-        (click)="start()"
-        [disabled]="isRecording"
-      >
-        Start Recording
-      </button>
-      <button
-        class="btn btn-danger"
-        (click)="stop()"
-        [disabled]="!isRecording"
-      >
-        Stop Recording
-      </button>
-    </div>
+  <h2>Meeting Transcriber</h2>
+  <div class="btn-group mt-4">
+    <button class="btn btn-primary" (click)="start()" [disabled]="isRecording">
+      Start Recording
+    </button>
+    <button class="btn btn-danger" (click)="stop()" [disabled]="!isRecording">
+      Stop Recording
+    </button>
   </div>
+</div>

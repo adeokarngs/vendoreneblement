@@ -1,41 +1,54 @@
 <form [formGroup]="tForm">
-    <div class="col-md-12">
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="">Language</label>
-                <!-- <input type="text" name="language" id="" class="form-control" formControlName="language"> -->
-                <select class="form-control" formControlName="language" name="language" id="">
-                    <option *ngFor="let item of lstLanguages" [value]="item.LanguageCulture">{{item.LanguageName}}
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="">File</label> &nbsp;&nbsp;<small *ngIf="file" (click)="removeFile()"> Remove X </small>
-                <input type="file" #Ifile class="form-control" (change)="onFileSelected($event)">
-
-            </div>
-        </div>
-
-
-
-        <div class="col-md-3 mt-3">
-
-            <button class="btn btn-primary" (click)="submit()">Submit </button>
-        </div>
-
+  <div class="col-md-12">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">Language</label>
+        <!-- <input type="text" name="language" id="" class="form-control" formControlName="language"> -->
+        <select
+          class="form-control"
+          formControlName="language"
+          name="language"
+          id=""
+        >
+          <option
+            *ngFor="let item of lstLanguages"
+            [value]="item.LanguageCulture"
+          >
+            {{ item.LanguageName }}
+          </option>
+        </select>
+      </div>
     </div>
-    <!-- <div class="col-12" >
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="">File</label> &nbsp;&nbsp;<small
+          *ngIf="file"
+          (click)="removeFile()"
+        >
+          Remove X
+        </small>
+        <input
+          type="file"
+          #Ifile
+          class="form-control"
+          (change)="onFileSelected($event)"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-3 mt-3">
+      <button class="btn btn-primary" (click)="submit()">Submit</button>
+    </div>
+  </div>
+  <!-- <div class="col-12" >
         <div class="form-group">
 
             <label for="">Translate</label>
             <textarea cols="100" formControlName="text" class="form-control"></textarea>
         </div>
     </div> -->
-    <!-- {{tForm.value|json}} -->
-    <div class="card m-4">
-        <pre>{{ translatedText }}</pre>
-    </div>
-
+  <!-- {{tForm.value|json}} -->
+  <div class="card m-4">
+    <pre>{{ translatedText }}</pre>
+  </div>
 </form>

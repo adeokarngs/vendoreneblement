@@ -12,4 +12,12 @@ export * from './vendor.service';
 import { VendorService } from './vendor.service';
 export * from './weatherForecast.service';
 import { WeatherForecastService } from './weatherForecast.service';
-export const APIS = [AuthenticationService, FilesService, MasterService, RoleService, UsersService, VendorService, WeatherForecastService];
+export const APIS = [
+  AuthenticationService,
+  FilesService,
+  MasterService,
+  RoleService,
+  UsersService,
+  VendorService,
+  WeatherForecastService,
+];

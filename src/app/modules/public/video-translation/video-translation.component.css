@@ -1,127 +1,128 @@
 .video-player-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }
 
 .controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .controls label {
-    font-size: 16px;
+  font-size: 16px;
 }
 
-.controls input, .controls select {
-    font-size: 14px;
-    padding: 5px;
-    margin-left: 10px;
+.controls input,
+.controls select {
+  font-size: 14px;
+  padding: 5px;
+  margin-left: 10px;
 }
 
 .video-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 video {
-    width: 640px; /* Fixed width for video */
-    height: 360px; /* Fixed height for video */
-    object-fit: cover;
+  width: 640px; /* Fixed width for video */
+  height: 360px; /* Fixed height for video */
+  object-fit: cover;
 }
 .video-player-container {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    padding: 20px;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    margin: auto;
+  font-family: "Segoe UI", Arial, sans-serif;
+  padding: 20px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: auto;
 }
 
 h3 {
-    text-align: center;
-    color: #333;
+  text-align: center;
+  color: #333;
 }
 
 .controls {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
 }
 
 .controls label {
-    flex: 1;
-    margin-right: 10px;
-    font-weight: bold;
-    color: #555;
+  flex: 1;
+  margin-right: 10px;
+  font-weight: bold;
+  color: #555;
 }
 
 .controls .form-control {
-    flex: 2;
-    margin-right: 20px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  flex: 2;
+  margin-right: 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .video-and-subtitles {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
 }
 
 .video-wrapper {
-    flex: 2;
-    margin-right: 20px;
-    position: relative;
+  flex: 2;
+  margin-right: 20px;
+  position: relative;
 }
 
 #my-video {
-    width: 100%;
-    border-radius: 10px;
-    background-color: #000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-radius: 10px;
+  background-color: #000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .subtitle-box {
-    flex: 1;
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+  flex: 1;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
 }
 
 .subtitle-box h4 {
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #555;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #555;
 }
 
 .subtitle-content {
-    padding: 5px;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
 }
 
 .subtitle-content p {
-    margin: 0 0 5px 0;
+  margin: 0 0 5px 0;
 }

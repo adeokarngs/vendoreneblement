@@ -8,18 +8,14 @@ import { FormsModule } from '@angular/forms';
 import { ServerGridComponent } from './server-grid/server-grid.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-
-
 @NgModule({
-  declarations: [
-    FileControlComponent,
-    CaptchaComponent,
-    ServerGridComponent
-  ],
+  declarations: [FileControlComponent, CaptchaComponent, ServerGridComponent],
   imports: [
     CommonModule,
-    CoreComponentsRoutingModule,FormsModule,NgxDatatableModule
+    CoreComponentsRoutingModule,
+    FormsModule,
+    NgxDatatableModule,
   ],
-  exports:[FileControlComponent,CaptchaComponent,ServerGridComponent]
+  exports: [FileControlComponent, CaptchaComponent, ServerGridComponent],
 })
-export class CoreComponentsModule { }
+export class CoreComponentsModule {}

@@ -5,15 +5,17 @@ import { ManageUsersComponent } from './user-management/manage-users/manage-user
 
 const routes: Routes = [
   {
-    path:"invite-user",component:InviteUserComponent
+    path: 'invite-user',
+    component: InviteUserComponent,
   },
   {
-    path:"manage-users",component:ManageUsersComponent
-  }
+    path: 'manage-users',
+    component: ManageUsersComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

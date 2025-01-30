@@ -6,22 +6,18 @@ import { FormControl } from '@angular/forms';
   standalone: false,
 
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
   meetingNumber: string;
   userName: string;
   userEmail: string;
   passWord: string;
-  places: any = []
+  places: any = [];
   errorMessage: string;
   isLoading: boolean;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   file = new FormControl();
-  ngOnInit(): void {
-
-  }
- 
-
+  ngOnInit(): void {}
 }

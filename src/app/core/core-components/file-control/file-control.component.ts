@@ -1,5 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, ElementRef, Input, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
@@ -9,7 +16,7 @@ import { environment } from '../../../../environments/environment.development';
   standalone: false,
 
   templateUrl: './file-control.component.html',
-  styleUrl: './file-control.component.css'
+  styleUrl: './file-control.component.css',
 })
 export class FileControlComponent {
   @Input() acceptedFileTypes: string[] = ['image/jpeg', 'image/png']; // File types (can be passed as input)
@@ -21,31 +28,32 @@ export class FileControlComponent {
   uploadError: boolean = false;
   uploadedFile: any | null = null;
   @ViewChild('file') file: ElementRef;
-  valueChange: Subscription | undefined; 
-  
+  valueChange: Subscription | undefined;
 
-  constructor(private http: HttpClient,private cdref: ChangeDetectorRef) {
+  constructor(
+    private http: HttpClient,
+    private cdref: ChangeDetectorRef,
+  ) {}
 
+  ngAfterViewInit() {
+    this.handleValueChange();
   }
 
-  ngAfterViewInit(){
-    this.handleValueChange()
-  }
-
-  handleValueChange(){
+  handleValueChange() {
     this.valueChange = this.control.valueChanges.subscribe({
-      next:(resp:any)=>{
-        this.http.get(environment.BASE_URL+"Files/getfile?fid="+resp).subscribe({
-          next:(resp:any)=>{
-            this.uploadedFile = resp.data[0];
-          }
-        })
-      }
-    })
+      next: (resp: any) => {
+        this.http
+          .get(environment.BASE_URL + 'Files/getfile?fid=' + resp)
+          .subscribe({
+            next: (resp: any) => {
+              this.uploadedFile = resp.data[0];
+            },
+          });
+      },
+    });
   }
   // Handle file change and validate
   onFileChange(event: Event): void {
-   
     const input = event.target as HTMLInputElement;
     if (input?.files?.length) {
       const file = input.files[0];
@@ -67,8 +75,7 @@ export class FileControlComponent {
       }
 
       this.selectedFile = file;
-      this.onUpload()
-
+      this.onUpload();
     }
   }
 
@@ -83,35 +90,34 @@ export class FileControlComponent {
     formData.append('file', this.selectedFile, this.selectedFile.name);
 
     // API URL for file upload
-    const uploadUrl = environment.BASE_URL+'Files/upload';
+    const uploadUrl = environment.BASE_URL + 'Files/upload';
 
     this.http.post<{ guid: string }>(uploadUrl, formData).subscribe(
       (response: any) => {
         this.uploading = false;
-        this.uploadedFile = response.data
-        this.valueChange.unsubscribe()
+        this.uploadedFile = response.data;
+        this.valueChange.unsubscribe();
         this.control.setValue(response.data.fid);
         this.uploadError = false;
-        this.handleValueChange()
+        this.handleValueChange();
       },
       () => {
         this.uploading = false;
         this.uploadError = true;
         this.file.nativeElement.value = '';
-      }
+      },
     );
   }
 
   // Handle file deletion
   onDelete(): void {
-    this.valueChange.unsubscribe()
+    this.valueChange.unsubscribe();
     this.resetFileUpload();
-    this.handleValueChange()
+    this.handleValueChange();
     // const deleteUrl = `https://your-backend-api/delete-endpoint/${this.control.value}`;
     // this.http.delete(deleteUrl).subscribe(() => {
     //   this.resetFileUpload();
     // });
-
   }
   ngOnDestroy(): void {
     // Unsubscribe when the component is destroyed to avoid memory leaks
@@ -122,11 +128,10 @@ export class FileControlComponent {
   // Reset file upload state
   resetFileUpload(): void {
     this.selectedFile = null;
-    this.uploadedFile= null;
+    this.uploadedFile = null;
     this.control.reset();
     this.file.nativeElement.value = '';
   }
 
   // Check if the file is uploaded
-
 }

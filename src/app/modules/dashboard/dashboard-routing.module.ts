@@ -4,15 +4,17 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
 
 const routes: Routes = [
   {
-    path: "", component: HomeDashboardComponent
-  }, 
+    path: '',
+    component: HomeDashboardComponent,
+  },
   {
-    path: "home", component: HomeDashboardComponent
-  }
+    path: 'home',
+    component: HomeDashboardComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

@@ -8,8 +8,6 @@ import { MasterService } from '../../../services/api';
   standalone: false,
 
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.css'
+  styleUrl: './user-profile.component.css',
 })
-export class UserProfileComponent {
- 
-}
+export class UserProfileComponent {}

@@ -1,13 +1,14 @@
-@import 'ngx-toastr/toastr';
+@import "ngx-toastr/toastr";
 
 /* Global Styles */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   overflow-x: hidden; /* Prevent horizontal scrolling */
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #f8f9fa;
 }
 
@@ -28,7 +29,7 @@ body, html {
 }
 
 /* Footer Styling - Reduce size */
-        
+
 footer {
   position: relative;
   width: 100%;
@@ -165,7 +166,7 @@ a:hover {
   text-decoration: underline;
 }
 
-    /* Make sure the inputs are visible and clickable */
+/* Make sure the inputs are visible and clickable */
 input[type="file"] {
   margin-top: 10px;
   padding: 5px;
@@ -176,5 +177,3 @@ label {
   margin-top: 10px;
   display: block;
 }
-
-

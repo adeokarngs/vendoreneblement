@@ -1,7 +1,7 @@
 <!-- login.component.html -->
 <div class="container mt-5">
   <!-- Card Layout for Login Form -->
-  <div class="card mx-auto" style="max-width: 400px;">
+  <div class="card mx-auto" style="max-width: 400px">
     <div class="card-header text-center">
       <h4>Login</h4>
     </div>
@@ -9,27 +9,57 @@
       <form [formGroup]="loginForm">
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="email" id="email" class="form-control" name="email" formControlName="email">
-          <div class="text-danger" *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].touched">
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            name="email"
+            formControlName="email"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              loginForm.controls['email'].errors &&
+              loginForm.controls['email'].touched
+            "
+          >
             <span>Email is required</span>
           </div>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" id="password" class="form-control" ngModel name="password" formControlName="password"
-            required>
-          <div class="text-danger"
-            *ngIf="loginForm.controls['password'].errors  && loginForm.controls['password'].touched">
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            ngModel
+            name="password"
+            formControlName="password"
+            required
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              loginForm.controls['password'].errors &&
+              loginForm.controls['password'].touched
+            "
+          >
             <span>Password is required</span>
           </div>
-
         </div>
         <div class="mb-3">
-
-          <app-captcha (captchaValidated)="onCaptchaValidated($event)"></app-captcha>
+          <app-captcha
+            (captchaValidated)="onCaptchaValidated($event)"
+          ></app-captcha>
         </div>
         <div class="mb-3">
-          <button type="button" class="btn btn-primary w-100" (click)="onSubmit()">Login</button>
+          <button
+            type="button"
+            class="btn btn-primary w-100"
+            (click)="onSubmit()"
+          >
+            Login
+          </button>
         </div>
       </form>
     </div>

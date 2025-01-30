@@ -1,36 +1,65 @@
 <div class="video-player-container">
-    <h3>Video Player with Dynamic Subtitles</h3>
+  <h3>Video Player with Dynamic Subtitles</h3>
 
-    <div class="controls">
-        <label for="video-file">Video</label>
-        <input class="form-control" id="video-file" type="file" (change)="onVideoFileSelected($event)" accept="video/*" />
+  <div class="controls">
+    <label for="video-file">Video</label>
+    <input
+      class="form-control"
+      id="video-file"
+      type="file"
+      (change)="onVideoFileSelected($event)"
+      accept="video/*"
+    />
 
-        <label for="subtitle-file">Transcription</label>
-        <input class="form-control" id="subtitle-file" type="file" (change)="onSubtitleFileSelected($event)" />
+    <label for="subtitle-file">Transcription</label>
+    <input
+      class="form-control"
+      id="subtitle-file"
+      type="file"
+      (change)="onSubtitleFileSelected($event)"
+    />
 
-        <label for="language-select">Language</label>
-        <select (change)="submit()" [formControl]="language" class="form-control" formControlName="language" name="language">
-            <option *ngFor="let item of lstLanguages" [value]="item.LanguageCulture">{{ item.LanguageName }}</option>
-        </select>
+    <label for="language-select">Language</label>
+    <select
+      (change)="submit()"
+      [formControl]="language"
+      class="form-control"
+      formControlName="language"
+      name="language"
+    >
+      <option *ngFor="let item of lstLanguages" [value]="item.LanguageCulture">
+        {{ item.LanguageName }}
+      </option>
+    </select>
+  </div>
+
+  <div class="video-and-subtitles">
+    <!-- Video Player -->
+    <div class="video-wrapper">
+      <video
+        (timeupdate)="onTimeUpdate()"
+        #myVideo
+        *ngIf="!loading"
+        id="my-video"
+        class="video-js vjs-default-skin"
+        controls
+        preload="auto"
+      >
+        <source [src]="videoSrc" type="video/mp4" />
+        <track kind="subtitles" [src]="subtitleSrc" default />
+      </video>
+      <h4 *ngIf="this.loading">
+        {{ videoSrc && loading ? "Loading..." : "Add Video" }}
+      </h4>
     </div>
 
-    <div class="video-and-subtitles">
-        <!-- Video Player -->
-        <div class="video-wrapper">
-            <video (timeupdate)="onTimeUpdate()" #myVideo *ngIf="!loading" id="my-video" class="video-js vjs-default-skin" controls preload="auto">
-                <source [src]="videoSrc" type="video/mp4" />
-                <track kind="subtitles" [src]="subtitleSrc" default />
-            </video>
-            <h4 *ngIf="this.loading">{{ videoSrc && loading ? "Loading..." : "Add Video" }}</h4>
-        </div>
-
-        <!-- Subtitle Box -->
-        <div class="subtitle-box">
-            <h4>Subtitles</h4>
-            <div class="subtitle-content">
-                <p *ngFor="let subtitle of activeSubtitles">{{ subtitle}}</p>
-                 <!-- <p>{{currentTimestamp}}</p> -->
-            </div>
-        </div>
+    <!-- Subtitle Box -->
+    <div class="subtitle-box">
+      <h4>Subtitles</h4>
+      <div class="subtitle-content">
+        <p *ngFor="let subtitle of activeSubtitles">{{ subtitle }}</p>
+        <!-- <p>{{currentTimestamp}}</p> -->
+      </div>
     </div>
+  </div>
 </div>

@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-server-grid',
   standalone: false,
 
   templateUrl: './server-grid.component.html',
-  styleUrl: './server-grid.component.css'
+  styleUrl: './server-grid.component.css',
 })
 export class ServerGridComponent {
   @Input() apiUrl!: string; // Backend API URL
-  @Input() columns: { name: string; prop: string }[] = []; // Column Config
+  @Input() columns: { name: string; prop: string,template?: TemplateRef<any>  }[] = []; // Column Config
 
   rows: any[] = [];
   totalRecords: number = 0;
@@ -21,30 +21,31 @@ export class ServerGridComponent {
   sortColumn: string = '';
   sortOrder: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.loadData();
   }
 
   loadData(): void {
-    debugger
     this.loading = true;
     const params = {
       page: this.pageNumber,
       pageSize: this.pageSize,
       sortColumn: this.sortColumn,
-      sortOrder: this.sortOrder
+      sortOrder: this.sortOrder,
     };
-    
-    this.http.get<{ data: any; total: number }>(this.apiUrl, { params }).subscribe({
-      next: (response) => {
-        this.rows = response.data?.pageData;
-        this.totalRecords = response.data?.total;;
-        this.loading = false;
-      },
-      error: () => (this.loading = false)
-    });
+
+    this.http
+      .get<{ data: any; total: number }>(this.apiUrl, { params })
+      .subscribe({
+        next: (response) => {
+          this.rows = response.data?.pageData;
+          this.totalRecords = response.data?.total;
+          this.loading = false;
+        },
+        error: () => (this.loading = false),
+      });
   }
 
   onSort(event: any): void {
@@ -55,7 +56,7 @@ export class ServerGridComponent {
   }
 
   onPage(event: any): void {
-    this.pageNumber = event.offset ;
+    this.pageNumber = event.offset;
     this.pageSize = event.limit;
     this.loadData();
   }
@@ -70,4 +71,8 @@ export class ServerGridComponent {
     // Implement delete logic
   }
 
+  getTemplateColumns(){
+    debugger
+    this.columns.filter(x=>x?.template)
+  }
 }

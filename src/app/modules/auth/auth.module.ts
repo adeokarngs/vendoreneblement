@@ -8,15 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreComponentsModule } from '../../core/core-components/core-components.module';
 
-
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegistrationComponent
-  ],
+  declarations: [LoginComponent, RegistrationComponent],
   imports: [
     CommonModule,
-    AuthRoutingModule,ReactiveFormsModule,FormsModule,CoreComponentsModule
-  ]
+    AuthRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CoreComponentsModule,
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}

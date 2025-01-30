@@ -6,18 +6,21 @@ import { VideoTranslationComponent } from './video-translation/video-translation
 
 const routes: Routes = [
   {
-    path:"",component:HomeComponent
+    path: '',
+    component: HomeComponent,
   },
   {
-    path:"translation",component:TranslationComponent
+    path: 'translation',
+    component: TranslationComponent,
   },
   {
-    path:"video-translation",component:VideoTranslationComponent
-  }
+    path: 'video-translation',
+    component: VideoTranslationComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PublicRoutingModule { }
+export class PublicRoutingModule {}

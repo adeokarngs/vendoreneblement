@@ -1,22 +1,18 @@
 <div class="sidebar">
-    <div class="sidebar-header">
-      <h3 class="text-white"><i class="fas fa-cogs"></i> My App</h3>
-    </div>
-    <ul class="list-unstyled" >
-        <li class="sidebar-item" *ngFor="let menu of (_menu.lstMenu|async)">
-          <a (click)="goto(menu?.path)" class="sidebar-link ">
-            <i class="fas fa-tachometer-alt"></i> {{menu?.title}}
-          </a>
-        </li>
- 
-
-      <li class="sidebar-item" (click)="logout()">
-        <small>
-            <a  class="sidebar-link">
-                <i class="fas fa-cogs"></i> Logout
-              </a>
-        </small>
-        
-      </li>
-    </ul>
+  <div class="sidebar-header">
+    <h3 class="text-white"><i class="fas fa-cogs"></i> My App</h3>
   </div>
+  <ul class="list-unstyled">
+    <li class="sidebar-item" *ngFor="let menu of _menu.lstMenu | async">
+      <a (click)="goto(menu?.path)" class="sidebar-link">
+        <i class="fas fa-tachometer-alt"></i> {{ menu?.title }}
+      </a>
+    </li>
+
+    <li class="sidebar-item" (click)="logout()">
+      <small>
+        <a class="sidebar-link"> <i class="fas fa-cogs"></i> Logout </a>
+      </small>
+    </li>
+  </ul>
+</div>

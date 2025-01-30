@@ -8,19 +8,21 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PublicLayoutComponent } from './public-layout/public-layout.component';
 import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
 
-
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
     PublicLayoutComponent,
-    AuthenticatedLayoutComponent
+    AuthenticatedLayoutComponent,
   ],
-  imports: [
-    CommonModule,
-    LayoutRoutingModule
+  imports: [CommonModule, LayoutRoutingModule],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+    PublicLayoutComponent,
+    AuthenticatedLayoutComponent,
   ],
-  exports:[HeaderComponent,FooterComponent,SidebarComponent,PublicLayoutComponent,AuthenticatedLayoutComponent]
 })
-export class LayoutModule { }
+export class LayoutModule {}

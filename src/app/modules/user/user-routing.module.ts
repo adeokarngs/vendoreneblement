@@ -6,20 +6,22 @@ import { authGuard } from '../../core/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path:"user-profile",component:UserProfileComponent,
+    path: 'user-profile',
+    component: UserProfileComponent,
     canActivate: [authGuard],
-    data:{
-      mandatoryProfileComplete:true
-    }
+    data: {
+      mandatoryProfileComplete: true,
+    },
   },
   {
-    path:"user-dashboard",component:UserDasboardComponent,
-    canActivate: [authGuard]
-  }
+    path: 'user-dashboard',
+    component: UserDasboardComponent,
+    canActivate: [authGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}

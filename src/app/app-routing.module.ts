@@ -6,54 +6,59 @@ import { authGuard } from './core/guards/auth.guard';
 import { RoleEnums } from './core/constants/enums/RoleEnums';
 
 const routes: Routes = [
-
   {
-    path: "",
-    redirectTo: "auth/login",
-    pathMatch: "full"
+    path: '',
+    redirectTo: 'auth/login',
+    pathMatch: 'full',
   },
   {
-    path: "public",
+    path: 'public',
     component: PublicLayoutComponent,
-    loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule),
-
+    loadChildren: () =>
+      import('./modules/public/public.module').then((m) => m.PublicModule),
   },
   {
-    path: "admin",
+    path: 'admin',
     component: AuthenticatedLayoutComponent,
-    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
     canActivate: [authGuard],
     data: {
-      isAccessibleTo: [RoleEnums.Admin]
-    }
-  },
-  {
-    path: "auth",
-    component: PublicLayoutComponent,
-    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
-  },
-  {
-    path: "user",
-    component: AuthenticatedLayoutComponent,
-    loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule),
-    canActivate: [authGuard],
-    data: {
-      isAccessibleTo: [RoleEnums.Vendor, RoleEnums.Consultant]
+      isAccessibleTo: [RoleEnums.Admin],
     },
   },
   {
-    path: "dashboard",
+    path: 'auth',
+    component: PublicLayoutComponent,
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'user',
     component: AuthenticatedLayoutComponent,
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    loadChildren: () =>
+      import('./modules/user/user.module').then((m) => m.UserModule),
     canActivate: [authGuard],
     data: {
-      isAccessibleTo: [RoleEnums.Vendor, RoleEnums.Consultant,RoleEnums.Admin]
+      isAccessibleTo: [RoleEnums.Vendor, RoleEnums.Consultant],
     },
-  }
+  },
+  {
+    path: 'dashboard',
+    component: AuthenticatedLayoutComponent,
+    loadChildren: () =>
+      import('./modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule,
+      ),
+    canActivate: [authGuard],
+    data: {
+      isAccessibleTo: [RoleEnums.Vendor, RoleEnums.Consultant, RoleEnums.Admin],
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

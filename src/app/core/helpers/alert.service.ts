@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlertService {
-
-  constructor( private toastr: ToastrService) { }
+  constructor(private toastr: ToastrService) {}
 
   /**
    * Displays a success message.

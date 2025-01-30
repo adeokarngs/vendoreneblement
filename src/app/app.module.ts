@@ -1,4 +1,8 @@
-import { CUSTOM_ELEMENTS_SCHEMA, InjectionToken, NgModule } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  InjectionToken,
+  NgModule,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +16,10 @@ import { PublicModule } from './modules/public/public.module';
 import { tokenInterceptor } from './core/interceptors/token.interceptor';
 import { AdminModule } from './modules/admin/admin.module';
 import { provideToastr, ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import {
+  BrowserAnimationsModule,
+  provideAnimations,
+} from '@angular/platform-browser/animations';
 import { errorHandlerInterceptor } from './core/interceptors/error-handler.interceptor';
 import { environment } from '../environments/environment.development';
 import { APIS, BASE_PATH } from './services/api';
@@ -21,14 +28,21 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CoreComponentsModule } from './core/core-components/core-components.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-
-
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule, AuthModule,NgxDatatableModule,CoreComponentsModule,
-    AppRoutingModule, LayoutModule, NgbModule, PublicModule, AdminModule, BrowserAnimationsModule, UserModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AuthModule,
+    NgxDatatableModule,
+    CoreComponentsModule,
+    AppRoutingModule,
+    LayoutModule,
+    NgbModule,
+    PublicModule,
+    AdminModule,
+    BrowserAnimationsModule,
+    UserModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
@@ -45,9 +59,15 @@ import { CoreComponentsModule } from './core/core-components/core-components.mod
     }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [...APIS, { provide: BASE_PATH, useValue: environment.BASE_URL_AI }, provideHttpClient(
-    withInterceptors([tokenInterceptor, errorHandlerInterceptor]),
-  ), provideToastr(), provideAnimations()],
-  bootstrap: [AppComponent]
+  providers: [
+    ...APIS,
+    { provide: BASE_PATH, useValue: environment.BASE_URL_AI },
+    provideHttpClient(
+      withInterceptors([tokenInterceptor, errorHandlerInterceptor]),
+    ),
+    provideToastr(),
+    provideAnimations(),
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

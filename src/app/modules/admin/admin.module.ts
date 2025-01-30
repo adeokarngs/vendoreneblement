@@ -8,15 +8,15 @@ import { InviteUserComponent } from './user-management/invite-user/invite-user.c
 import { ManageUsersComponent } from './user-management/manage-users/manage-users.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-
 @NgModule({
-  declarations: [
-    InviteUserComponent,
-    ManageUsersComponent
-  ],
+  declarations: [InviteUserComponent, ManageUsersComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule,ReactiveFormsModule,FormsModule,CoreComponentsModule,NgxDatatableModule
-  ]
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CoreComponentsModule,
+    NgxDatatableModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

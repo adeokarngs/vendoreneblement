@@ -9,23 +9,23 @@ export const authGuard: CanActivateFn = (route, state) => {
   const alert = inject(AlertService);
 
   const currentUser = session.getCurrentUser();
-  
+
   // If no user logged in
   if (!currentUser) {
-    alert.error("Please login to access this page.");
-    router.navigateByUrl("auth/login");
+    alert.error('Please login to access this page.');
+    router.navigateByUrl('auth/login');
     return false;
   }
 
   // Collect data from entire route hierarchy
   const { roles } = getRouteData(route);
-  
+
   // Check role permissions if specified
   if (roles.length > 0) {
     const userRole = currentUser.user?.role?.code;
     if (!userRole || !roles.includes(userRole)) {
       alert.error("You don't have permission to access this page.");
-      router.navigateByUrl("/unauthorized");
+      router.navigateByUrl('/unauthorized');
       return false;
     }
   }

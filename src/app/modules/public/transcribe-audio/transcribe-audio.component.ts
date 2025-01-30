@@ -5,12 +5,12 @@ import { Component } from '@angular/core';
   standalone: false,
 
   templateUrl: './transcribe-audio.component.html',
-  styleUrl: './transcribe-audio.component.css'
+  styleUrl: './transcribe-audio.component.css',
 })
 export class TranscribeAudioComponent {
   isRecording = false;
 
-  constructor() { }
+  constructor() {}
 
   start() {
     this.isRecording = true;
@@ -24,8 +24,6 @@ export class TranscribeAudioComponent {
 
   private mediaRecorder: MediaRecorder | null = null;
   private audioChunks: Blob[] = [];
-
-
 
   startRecording() {
     navigator.mediaDevices

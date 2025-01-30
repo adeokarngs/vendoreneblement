@@ -9,18 +9,19 @@ import { VideoTranslationComponent } from './video-translation/video-translation
 import { CoreComponentsModule } from '../../core/core-components/core-components.module';
 import { TranscribeAudioComponent } from './transcribe-audio/transcribe-audio.component';
 
-
-
 @NgModule({
   declarations: [
     HomeComponent,
     TranslationComponent,
     VideoTranslationComponent,
-    TranscribeAudioComponent
+    TranscribeAudioComponent,
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule,ReactiveFormsModule,FormsModule,CoreComponentsModule
-  ]
+    PublicRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CoreComponentsModule,
+  ],
 })
-export class PublicModule { }
+export class PublicModule {}
