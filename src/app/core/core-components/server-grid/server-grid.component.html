@@ -1,6 +1,6 @@
 <ngx-datatable
   *ngIf="columns.length > 0"
-  class="bootstrap table-bordered table-responsive"
+  class="bootstrap card table table-bordered table-hover dataTable dtr-inline"
   [rows]="rows"
   [columns]="columns"
   [loadingIndicator]="loading"
@@ -37,7 +37,7 @@
           ></ng-container>
         </ng-container>
         <ng-template #defaultHeader>
-          <strong>{{column.name}}</strong>
+          <strong class="text-default">{{column.name}}</strong>
         </ng-template>
       </span>
     </ng-template>
@@ -63,13 +63,13 @@
     </ng-template>
 
     <!-- Custom Footer Template -->
-    <ng-template ngx-datatable-footer-template let-column="column">
+    <!-- <ng-template ngx-datatable-footer-template let-column="column">
       <div *ngIf="col.footerTemplate" class="text-muted small">
         <ng-container
           [ngTemplateOutlet]="col.footerTemplate"
           [ngTemplateOutletContext]="{ $implicit: column }"
         ></ng-container>
       </div>
-    </ng-template>
+    </ng-template> -->
   </ngx-datatable-column>
 </ngx-datatable>

@@ -21,7 +21,7 @@ export class SidebarComponent {
    */
   constructor(
     private _session: SessionHelperService,
-    private _router: Router,
+    public _router: Router,
     public _menu: MenuService,
   ) {}
 

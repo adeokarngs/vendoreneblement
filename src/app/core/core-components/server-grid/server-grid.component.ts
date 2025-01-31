@@ -8,9 +8,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
   templateUrl: './server-grid.component.html',
   styleUrl: './server-grid.component.css',
 })
-
 export class ServerGridComponent {
-  
   @Input() apiUrl!: string; // Backend API URL
   @Input() columns: GridColumn[] = []; // Column Config
 
@@ -73,9 +71,8 @@ export class ServerGridComponent {
     // Implement delete logic
   }
 
-  getTemplateColumns(){
-    debugger
-    this.columns.filter(x=>x?.template)
+  getTemplateColumns() {
+    this.columns.filter((x) => x?.template);
   }
 }
 export interface GridColumn {
