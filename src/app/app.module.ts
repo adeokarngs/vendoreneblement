@@ -26,6 +26,10 @@ import { APIS, BASE_PATH } from './services/api';
 import { UserModule } from './modules/user/user.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CoreComponentsModule } from './core/core-components/core-components.module';
+import { loadingInterceptor } from './core/interceptors/loading.interceptor';
+import { VendorModule } from './modules/vendor/vendor.module';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,6 +47,7 @@ import { CoreComponentsModule } from './core/core-components/core-components.mod
     AdminModule,
     BrowserAnimationsModule,
     UserModule,
+    VendorModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
@@ -57,13 +62,15 @@ import { CoreComponentsModule } from './core/core-components/core-components.mod
         warning: 'toast-warning',
       },
     }),
+    CommonModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     ...APIS,
     { provide: BASE_PATH, useValue: environment.BASE_URL_AI },
     provideHttpClient(
-      withInterceptors([tokenInterceptor, errorHandlerInterceptor]),
+      withInterceptors([loadingInterceptor,tokenInterceptor, errorHandlerInterceptor]),
     ),
     provideToastr(),
     provideAnimations(),

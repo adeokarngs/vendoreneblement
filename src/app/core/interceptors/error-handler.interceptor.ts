@@ -13,6 +13,7 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
         // Client-side error
         console.error('Client-side error:', error.error.message);
       } else {
+        debugger
         // Server-side error
         console.error('Server-side error:', {
           status: error.status,
@@ -46,7 +47,7 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
             );
             break;
           default:
-            console.error(`Unexpected status code: ${error.status}`);
+            toastr.error("A network error occurred. Please refresh the page or contact support.")
         }
       }
 

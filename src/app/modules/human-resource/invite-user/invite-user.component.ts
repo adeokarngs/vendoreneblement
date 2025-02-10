@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../services/feartures/auth.service';
-import { RoleService } from '../../../../services/api';
-import { RoleEnums } from '../../../../core/constants/enums/RoleEnums';
+import { AuthService } from '../../../services/feartures/auth.service';
+import { RoleService } from '../../../services/api';
+import { RoleEnums } from '../../../core/constants/enums/RoleEnums';
 
 @Component({
   selector: 'app-invite-user',

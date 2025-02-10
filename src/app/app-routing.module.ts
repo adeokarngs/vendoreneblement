@@ -18,6 +18,16 @@ const routes: Routes = [
       import('./modules/public/public.module').then((m) => m.PublicModule),
   },
   {
+    path: 'hr',
+    component: AuthenticatedLayoutComponent,
+    loadChildren: () =>
+      import('./modules/human-resource/human-resource.module').then((m) => m.HumanResourceModule),
+    canActivate: [authGuard],
+    data: {
+      isAccessibleTo: [RoleEnums.Admin],
+    },
+  },
+  {
     path: 'admin',
     component: AuthenticatedLayoutComponent,
     loadChildren: () =>
@@ -53,6 +63,19 @@ const routes: Routes = [
     canActivate: [authGuard],
     data: {
       isAccessibleTo: [RoleEnums.Vendor, RoleEnums.Consultant, RoleEnums.Admin],
+    },
+  },
+
+  {
+    path: 'vendor',
+    component: AuthenticatedLayoutComponent,
+    loadChildren: () =>
+      import('./modules/vendor/vendor.module').then(
+        (m) => m.VendorModule,
+      ),
+    canActivate: [authGuard],
+    data: {
+      isAccessibleTo: [RoleEnums.Vendor],
     },
   },
 ];

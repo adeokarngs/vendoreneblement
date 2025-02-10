@@ -7,7 +7,9 @@
   "paths": {
     "/api/Authentication/test": {
       "get": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "test",
         "responses": {
           "200": {
@@ -18,7 +20,9 @@
     },
     "/api/Authentication/login": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "login",
         "requestBody": {
           "content": {
@@ -48,7 +52,9 @@
     },
     "/api/Authentication/register": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "register",
         "requestBody": {
           "content": {
@@ -78,7 +84,9 @@
     },
     "/api/Authentication/send-invite": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "send-invite",
         "requestBody": {
           "content": {
@@ -108,7 +116,9 @@
     },
     "/api/Authentication/get-invite": {
       "get": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "get-invite",
         "parameters": [
           {
@@ -128,7 +138,9 @@
     },
     "/api/Files/getfile": {
       "get": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "parameters": [
           {
             "name": "fid",
@@ -147,7 +159,9 @@
     },
     "/api/Files/upload": {
       "post": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -177,7 +191,9 @@
     },
     "/api/Files/downloadFile": {
       "get": {
-        "tags": ["Files"],
+        "tags": [
+          "Files"
+        ],
         "parameters": [
           {
             "name": "fid",
@@ -196,7 +212,9 @@
     },
     "/api/Master/get-by-type": {
       "post": {
-        "tags": ["Master"],
+        "tags": [
+          "Master"
+        ],
         "operationId": "getByType",
         "requestBody": {
           "content": {
@@ -235,7 +253,9 @@
     },
     "/api/Master/get-by-parent-id": {
       "post": {
-        "tags": ["Master"],
+        "tags": [
+          "Master"
+        ],
         "operationId": "getByParentId",
         "parameters": [
           {
@@ -256,7 +276,9 @@
     },
     "/api/Master": {
       "get": {
-        "tags": ["Master"],
+        "tags": [
+          "Master"
+        ],
         "operationId": "MasterList",
         "responses": {
           "200": {
@@ -265,7 +287,9 @@
         }
       },
       "post": {
-        "tags": ["Master"],
+        "tags": [
+          "Master"
+        ],
         "operationId": "MasterAdd",
         "requestBody": {
           "content": {
@@ -295,7 +319,9 @@
     },
     "/api/Master/{id}": {
       "get": {
-        "tags": ["Master"],
+        "tags": [
+          "Master"
+        ],
         "operationId": "MasterById",
         "parameters": [
           {
@@ -315,7 +341,9 @@
         }
       },
       "put": {
-        "tags": ["Master"],
+        "tags": [
+          "Master"
+        ],
         "operationId": "MasterUpdate",
         "parameters": [
           {
@@ -354,8 +382,185 @@
         }
       },
       "delete": {
-        "tags": ["Master"],
+        "tags": [
+          "Master"
+        ],
         "operationId": "MasterDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Resource/get-resource-grid": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "operationId": "get-resource-grid",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sortColumn",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Resource": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "operationId": "ResourceList",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "operationId": "ResourceAdd",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Resource/{id}": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "operationId": "ResourceById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Resource"
+        ],
+        "operationId": "ResourceUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Resource"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Resource"
+        ],
+        "operationId": "ResourceDelete",
         "parameters": [
           {
             "name": "id",
@@ -376,7 +581,9 @@
     },
     "/api/Role": {
       "get": {
-        "tags": ["Role"],
+        "tags": [
+          "Role"
+        ],
         "operationId": "RoleList",
         "responses": {
           "200": {
@@ -385,7 +592,9 @@
         }
       },
       "post": {
-        "tags": ["Role"],
+        "tags": [
+          "Role"
+        ],
         "operationId": "RoleAdd",
         "requestBody": {
           "content": {
@@ -415,7 +624,9 @@
     },
     "/api/Role/{id}": {
       "get": {
-        "tags": ["Role"],
+        "tags": [
+          "Role"
+        ],
         "operationId": "RoleById",
         "parameters": [
           {
@@ -435,7 +646,9 @@
         }
       },
       "put": {
-        "tags": ["Role"],
+        "tags": [
+          "Role"
+        ],
         "operationId": "RoleUpdate",
         "parameters": [
           {
@@ -474,7 +687,9 @@
         }
       },
       "delete": {
-        "tags": ["Role"],
+        "tags": [
+          "Role"
+        ],
         "operationId": "RoleDelete",
         "parameters": [
           {
@@ -496,7 +711,9 @@
     },
     "/api/Users/get-user-grid": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "operationId": "get-user-grid",
         "parameters": [
           {
@@ -539,7 +756,9 @@
     },
     "/api/Users": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "operationId": "UsersList",
         "responses": {
           "200": {
@@ -548,7 +767,9 @@
         }
       },
       "post": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "operationId": "UsersAdd",
         "requestBody": {
           "content": {
@@ -578,7 +799,9 @@
     },
     "/api/Users/{id}": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "operationId": "UsersById",
         "parameters": [
           {
@@ -598,7 +821,9 @@
         }
       },
       "put": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "operationId": "UsersUpdate",
         "parameters": [
           {
@@ -637,7 +862,9 @@
         }
       },
       "delete": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "operationId": "UsersDelete",
         "parameters": [
           {
@@ -659,7 +886,9 @@
     },
     "/api/Vendor": {
       "get": {
-        "tags": ["Vendor"],
+        "tags": [
+          "Vendor"
+        ],
         "operationId": "VendorList",
         "responses": {
           "200": {
@@ -668,7 +897,9 @@
         }
       },
       "post": {
-        "tags": ["Vendor"],
+        "tags": [
+          "Vendor"
+        ],
         "operationId": "VendorAdd",
         "requestBody": {
           "content": {
@@ -698,7 +929,9 @@
     },
     "/api/Vendor/{id}": {
       "get": {
-        "tags": ["Vendor"],
+        "tags": [
+          "Vendor"
+        ],
         "operationId": "VendorById",
         "parameters": [
           {
@@ -718,7 +951,9 @@
         }
       },
       "put": {
-        "tags": ["Vendor"],
+        "tags": [
+          "Vendor"
+        ],
         "operationId": "VendorUpdate",
         "parameters": [
           {
@@ -757,7 +992,9 @@
         }
       },
       "delete": {
-        "tags": ["Vendor"],
+        "tags": [
+          "Vendor"
+        ],
         "operationId": "VendorDelete",
         "parameters": [
           {
@@ -779,7 +1016,9 @@
     },
     "/WeatherForecast": {
       "get": {
-        "tags": ["WeatherForecast"],
+        "tags": [
+          "WeatherForecast"
+        ],
         "operationId": "GetWeatherForecast",
         "responses": {
           "200": {
@@ -816,7 +1055,9 @@
     },
     "/WeatherForecast/search": {
       "get": {
-        "tags": ["WeatherForecast"],
+        "tags": [
+          "WeatherForecast"
+        ],
         "parameters": [
           {
             "name": "query",
@@ -835,7 +1076,9 @@
     },
     "/WeatherForecast/TEST": {
       "get": {
-        "tags": ["WeatherForecast"],
+        "tags": [
+          "WeatherForecast"
+        ],
         "parameters": [
           {
             "name": "type",
@@ -854,7 +1097,9 @@
     },
     "/WeatherForecast/TEST2": {
       "post": {
-        "tags": ["WeatherForecast"],
+        "tags": [
+          "WeatherForecast"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -884,12 +1129,13 @@
   },
   "components": {
     "schemas": {
-      "Consultant": {
+      "Address": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "createdBy": {
             "type": "integer",
@@ -904,70 +1150,19 @@
             "type": "string",
             "format": "date-time"
           },
-          "udpatedDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "address": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ConsultantAddress"
-            },
-            "nullable": true
-          },
-          "socialMediaAccounts": {
-            "type": "string",
-            "nullable": true
-          },
-          "alternateContact": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Contact"
-            },
-            "nullable": true
-          },
-          "isOpenForVerification": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ConsultantAddress": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "createdBy": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "updatedBy": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "createdDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "udpatedDate": {
+          "updatedDate": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
           "consultantId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
-          "ownerType": {
-            "type": "string",
+          "resourceId": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
           "addressLine1": {
@@ -989,12 +1184,13 @@
         },
         "additionalProperties": false
       },
-      "Contact": {
+      "Consultant": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "createdBy": {
             "type": "integer",
@@ -1009,12 +1205,80 @@
             "type": "string",
             "format": "date-time"
           },
-          "udpatedDate": {
+          "updatedDate": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
           "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "nullable": true
+          },
+          "socialMediaAccounts": {
+            "type": "string",
+            "nullable": true
+          },
+          "alternateContact": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Contact"
+            },
+            "nullable": true
+          },
+          "mainSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MainSkillMapping"
+            },
+            "nullable": true
+          },
+          "subSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubSkillMapping"
+            },
+            "nullable": true
+          },
+          "isOpenForVerification": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "consultantId": {
             "type": "integer",
             "format": "int32"
           },
@@ -1061,13 +1325,13 @@
         },
         "additionalProperties": false
       },
-      "Master": {
-        "required": ["code", "type", "value"],
+      "MainSkillMapping": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "createdBy": {
             "type": "integer",
@@ -1082,7 +1346,48 @@
             "type": "string",
             "format": "date-time"
           },
-          "udpatedDate": {
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "skillId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skill": {
+            "$ref": "#/components/schemas/Master"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Master": {
+        "required": [
+          "code",
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
             "type": "string",
             "format": "date-time",
             "nullable": true
@@ -1112,9 +1417,97 @@
         },
         "additionalProperties": false
       },
+      "Project": {
+        "required": [
+          "projectName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "projectName": {
+            "maxLength": 155,
+            "minLength": 1,
+            "type": "string"
+          },
+          "projectDescription": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectResourceMapping": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
+          }
+        },
+        "additionalProperties": false
+      },
       "RegistrationDto": {
         "type": "object",
         "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
           "email": {
             "type": "string",
             "nullable": true
@@ -1134,12 +1527,18 @@
         },
         "additionalProperties": false
       },
-      "Role": {
+      "Resource": {
+        "required": [
+          "genderId",
+          "jobTitle",
+          "name"
+        ],
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "createdBy": {
             "type": "integer",
@@ -1154,7 +1553,99 @@
             "type": "string",
             "format": "date-time"
           },
-          "udpatedDate": {
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "genderId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Master"
+          },
+          "age": {
+            "maximum": 65,
+            "minimum": 18,
+            "type": "integer",
+            "format": "int32"
+          },
+          "phoneNumber": {
+            "maxLength": 12,
+            "type": "string",
+            "format": "tel",
+            "nullable": true
+          },
+          "email": {
+            "maxLength": 255,
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "jobTitle": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string"
+          },
+          "mainSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MainSkillMapping"
+            },
+            "nullable": true
+          },
+          "subSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubSkillMapping"
+            },
+            "nullable": true
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "nullable": true
+          },
+          "projects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProjectResourceMapping"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
             "type": "string",
             "format": "date-time",
             "nullable": true
@@ -1170,13 +1661,13 @@
         },
         "additionalProperties": false
       },
-      "User": {
-        "required": ["email", "password"],
+      "SubSkillMapping": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "createdBy": {
             "type": "integer",
@@ -1191,12 +1682,59 @@
             "type": "string",
             "format": "date-time"
           },
-          "udpatedDate": {
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "skillId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skill": {
+            "$ref": "#/components/schemas/Master"
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "required": [
+          "email",
+          "name",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
           "email": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 255,
             "minLength": 1,
             "type": "string"
           },
@@ -1249,7 +1787,8 @@
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "createdBy": {
             "type": "integer",
@@ -1264,7 +1803,7 @@
             "type": "string",
             "format": "date-time"
           },
-          "udpatedDate": {
+          "updatedDate": {
             "type": "string",
             "format": "date-time",
             "nullable": true
@@ -1272,6 +1811,13 @@
           "userId": {
             "type": "integer",
             "format": "int32"
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Resource"
+            },
+            "nullable": true
           },
           "emailId": {
             "maxLength": 100,
@@ -1451,7 +1997,7 @@
   },
   "security": [
     {
-      "Bearer": []
+      "Bearer": [ ]
     }
   ]
 }

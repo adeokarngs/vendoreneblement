@@ -1,5 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, TemplateRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  output,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-server-grid',
@@ -11,7 +19,12 @@ import { Component, Input, TemplateRef } from '@angular/core';
 export class ServerGridComponent {
   @Input() apiUrl!: string; // Backend API URL
   @Input() columns: GridColumn[] = []; // Column Config
+  @Input() uData: any; // Column Config
+  @Input() showActionButtons: boolean; // Column Config
 
+  @Output() onView = new EventEmitter<any>();
+  @Output() onEdit = new EventEmitter<any>();
+  @Output() onDelete = new EventEmitter<any>();
   rows: any[] = [];
   totalRecords: number = 0;
   loading: boolean = false;
@@ -21,12 +34,25 @@ export class ServerGridComponent {
   sortColumn: string = '';
   sortOrder: string = '';
 
+  @ViewChild('actionTemplate', { static: true })
+  actionTemplate!: TemplateRef<any>;
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.checkActionButtons();
     this.loadData();
   }
-
+  checkActionButtons() {
+    if (this.showActionButtons) {
+      if (this.columns) {
+        this.columns.push({
+          name: 'Actions',
+          prop: '', // No data property needed for actions
+          template: this.actionTemplate,
+        });
+      }
+    }
+  }
   loadData(): void {
     this.loading = true;
     const params = {
@@ -35,7 +61,12 @@ export class ServerGridComponent {
       sortColumn: this.sortColumn,
       sortOrder: this.sortOrder,
     };
-
+    if (this.uData) {
+      const keys = Object.keys(this.uData);
+      keys.forEach((element) => {
+        params[element] = this.uData[element];
+      });
+    }
     this.http
       .get<{ data: any; total: number }>(this.apiUrl, { params })
       .subscribe({
@@ -61,14 +92,15 @@ export class ServerGridComponent {
     this.loadData();
   }
 
+  view(row: any) {
+    this.onView.emit(row);
+  }
   edit(row: any): void {
-    console.log('Edit clicked', row);
-    // Implement edit logic
+    this.onEdit.emit(row);
   }
 
   delete(row: any): void {
-    console.log('Delete clicked', row);
-    // Implement delete logic
+    this.onDelete.emit(row);
   }
 
   getTemplateColumns() {

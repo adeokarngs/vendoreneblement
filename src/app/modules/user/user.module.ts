@@ -5,14 +5,15 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserDasboardComponent } from './user-dasboard/user-dasboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VendorDetailsComponent } from './vendor-details/vendor-details.component';
+import { VendorModule } from '../vendor/vendor.module';
+import { ConsultantModule } from '../consultant/consultant.module';
 
 @NgModule({
   declarations: [
     UserProfileComponent,
     UserDasboardComponent,
-    VendorDetailsComponent,
+
   ],
-  imports: [CommonModule, UserRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, UserRoutingModule, ReactiveFormsModule, FormsModule,VendorModule,ConsultantModule],
 })
 export class UserModule {}

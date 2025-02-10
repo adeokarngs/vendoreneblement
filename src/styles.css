@@ -1,8 +1,11 @@
 @import "ngx-toastr/toastr";
-
+@import "@ng-select/ng-select/themes/default.theme.css";
 /* Global Styles */
 
-
+ .btn-primary {
+  background-color: #0665bb;
+  color: #fff;
+ }
 /* Make sure the inputs are visible and clickable */
 input[type="file"] {
   margin-top: 10px;
@@ -14,3 +17,46 @@ input[type="file"] {
   margin-top: 10px;
   display: block;
 } */
+
+.fullscreen-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;  /* Start hidden */
+  visibility: hidden;  /* Hide from interaction */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.fullscreen-loader.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+/* Optional: Hide loader when not needed */
+.hidden {
+  display: none;
+}
+
+
+/* SIDEBAR */
+[class*=sidebar-dark-] {
+  background-color: #00050a;
+}
+
+.sidebar-dark-secondary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-secondary .nav-sidebar > .nav-item > .nav-link.active {
+  background-color: #0665bb;
+  color: #fff;
+}
+/* SIDEBAR END */

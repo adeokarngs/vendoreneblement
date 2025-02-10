@@ -1,0 +1,182 @@
+<div class="card card-secondary">
+  <div class="card-header">
+    <h3>Add Resource</h3>
+    <span>
+      <strong class="text-danger">*</strong> Marked fields are mandatory.
+    </span>
+  </div>
+
+  <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()">
+    <div class="card-body">
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Name <span class="text-danger">*</span></label>
+        <input
+          id="name"
+          formControlName="name"
+          class="form-control"
+          type="text"
+        />
+        <div *ngIf="f['name'].invalid && f['name'].touched" class="text-danger">
+          <div *ngIf="f['name'].errors?.['required']">Name is required.</div>
+          <div *ngIf="f['name'].errors?.['minlength']">
+            Minimum 2 characters.
+          </div>
+          <div *ngIf="f['name'].errors?.['maxlength']">
+            Maximum 100 characters.
+          </div>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label for="gender">Gender <span class="text-danger">*</span></label>
+        <select id="gender" formControlName="genderId" class="form-control">
+          <option *ngFor="let gender of lstGenders" [value]="gender.id">
+            {{ gender.value }}
+          </option>
+        </select>
+        <div
+          *ngIf="f['genderId'].invalid && f['genderId'].touched"
+          class="text-danger"
+        >
+          <div *ngIf="f['genderId'].errors?.['required']">
+            Gender is required.
+          </div>
+        </div>
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">Age <span class="text-danger">*</span></label>
+        <input
+          id="age"
+          formControlName="age"
+          class="form-control"
+          type="number"
+        />
+        <div *ngIf="f['age'].invalid && f['age'].touched" class="text-danger">
+          <div *ngIf="f['age'].errors?.['required']">Age is required.</div>
+          <div *ngIf="f['age'].errors?.['min']">Minimum age is 18.</div>
+          <div *ngIf="f['age'].errors?.['max']">Maximum age is 65.</div>
+        </div>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          id="phoneNumber"
+          formControlName="phoneNumber"
+          class="form-control"
+          type="text"
+        />
+        <div
+          *ngIf="f['phoneNumber'].invalid && f['phoneNumber'].touched"
+          class="text-danger"
+        >
+          <div *ngIf="f['phoneNumber'].errors?.['pattern']">
+            Invalid phone number.
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email <span class="text-danger">*</span></label>
+        <input
+          id="email"
+          formControlName="email"
+          class="form-control"
+          type="email"
+        />
+        <div
+          *ngIf="f['email'].invalid && f['email'].touched"
+          class="text-danger"
+        >
+          <div *ngIf="f['email'].errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="f['email'].errors?.['email']">
+            Invalid email address.
+          </div>
+        </div>
+      </div>
+
+      <!-- Job Title -->
+      <div class="form-group">
+        <label for="jobTitle"
+          >Job Title <span class="text-danger">*</span></label
+        >
+        <input
+          id="jobTitle"
+          formControlName="jobTitle"
+          class="form-control"
+          type="text"
+        />
+        <div
+          *ngIf="f['jobTitle'].invalid && f['jobTitle'].touched"
+          class="text-danger"
+        >
+          <div *ngIf="f['jobTitle'].errors?.['required']">
+            Job title is required.
+          </div>
+          <div *ngIf="f['jobTitle'].errors?.['maxlength']">
+            Maximum 200 characters.
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Skills -->
+
+      <div class="form-group">
+        <label for="skills"
+          >Select Main Skills <span class="text-danger">*</span></label
+        >
+        <app-multiselect-dropdown
+          [control]="f['mainSkills']"
+          [data]="lstMainSkill"
+          (onSelect)="getSubSkills($event)"
+          (onDeselect)="removeSubSkills($event)"
+        ></app-multiselect-dropdown>
+        <div
+          *ngIf="f['mainSkills'].invalid && f['mainSkills'].touched"
+          class="text-danger"
+        >
+          <div *ngIf="f['mainSkills'].errors?.['required']">
+            At least one skill is required.
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub Skills -->
+
+      <div class="form-group">
+        <label for="skills"
+          >Select Sub Skills <span class="text-danger">*</span></label
+        >
+        <app-multiselect-dropdown
+          [control]="f['subSkills']"
+          [data]="lstSubSkill"
+          (onSelect)="getSubSkills($event)"
+          (onDeselect)="removeSubSkills($event)"
+        ></app-multiselect-dropdown>
+        <div
+          *ngIf="f['subSkills'].invalid && f['subSkills'].touched"
+          class="text-danger"
+        >
+          <div *ngIf="f['subSkills'].errors?.['required']">
+            At least one skill is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <!-- Submit Button -->
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

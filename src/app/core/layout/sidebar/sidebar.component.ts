@@ -15,6 +15,7 @@ export class SidebarComponent {
     | { path: string; tile: string; default?: undefined }
     | { path: string; tile: string; default: boolean }
   )[];
+  objUser:any;
 
   /**
    *
@@ -25,7 +26,9 @@ export class SidebarComponent {
     public _menu: MenuService,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.objUser  = this._session.getCurrentUser()
+  }
   logout() {
     this._session.clearSession();
     this._router.navigate(['/auth/login']);

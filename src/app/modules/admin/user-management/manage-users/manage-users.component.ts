@@ -17,14 +17,14 @@ export class ManageUsersComponent {
 
   ngOnInit() {
     this.columns = [
-      // { name: 'ID', prop: 'id' },
-      { name: 'Role', prop: 'role.name' },
+      { name: 'Name', prop: 'name' },
       { name: 'Email', prop: 'email' },
-      {
-        name: 'Actions',
-        prop: '', // No data property needed for actions
-        template: this.actionTemplate,
-      },
+      { name: 'Role', prop: 'role.name' },
+      // {
+      //   name: 'Actions',
+      //   prop: '', // No data property needed for actions
+      //   template: this.actionTemplate,
+      // },
     ];
   }
   edit(row: any): void {

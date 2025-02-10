@@ -19,17 +19,27 @@
 
   <app-footer></app-footer>
 </div> -->
-<div class="wrapper">
+<div class="">
   <!-- Preloader -->
   <!-- <div class="preloader flex-column justify-content-center align-items-center">
     <img
-      class="animation__wobble"
-      src="img/AdminLTELogo.png"
-      alt="AdminLTELogo"
+      class=""
+      src="img/loading.svg"
+      alt="Loading..."
       height="60"
       width="60"
     />
   </div> -->
+
+  <div
+    id="loader"
+    class="fullscreen-loader"
+    [class.visible]="loaderService.loaderSubject | async"
+  >
+    <div class="loader-container">
+      <img src="img/loading.svg" alt="" />
+    </div>
+  </div>  
 
   <!-- Navbar -->
   <app-header></app-header>
