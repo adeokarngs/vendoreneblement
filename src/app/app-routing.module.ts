@@ -62,7 +62,7 @@ const routes: Routes = [
       ),
     canActivate: [authGuard],
     data: {
-      isAccessibleTo: [RoleEnums.Vendor, RoleEnums.Consultant, RoleEnums.Admin],
+      isAccessibleTo: [RoleEnums.Vendor, RoleEnums.Consultant, RoleEnums.Admin,,RoleEnums.HR],
     },
   },
 

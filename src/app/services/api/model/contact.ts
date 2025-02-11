@@ -15,8 +15,8 @@ export interface Contact {
     updatedBy?: number | null;
     createdDate?: string;
     updatedDate?: string | null;
-    consultantId?: number;
-    phoneCode?: string | null;
+    consultantId?: number | null;
+    resourceId?: number | null;
     phoneNo?: string | null;
 }
 

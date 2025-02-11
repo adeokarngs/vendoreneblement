@@ -12,7 +12,10 @@ const routes: Routes = [
     path:"add-resource",component:AddResourceComponent
   },
   {
-    path:"view-resource",component:ViewResourceComponent
+    path:"view-resource/:id",component:ViewResourceComponent
+  },
+  {
+    path:"edit-resource/:id",component:AddResourceComponent
   }
 ];
 

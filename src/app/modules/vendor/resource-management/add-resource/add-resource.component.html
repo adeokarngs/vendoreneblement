@@ -94,12 +94,8 @@
           *ngIf="f['email'].invalid && f['email'].touched"
           class="text-danger"
         >
-          <div *ngIf="f['email'].errors?.['required']">
-            Email is required.
-          </div>
-          <div *ngIf="f['email'].errors?.['email']">
-            Invalid email address.
-          </div>
+          <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+          <div *ngIf="f['email'].errors?.['email']">Invalid email address.</div>
         </div>
       </div>
 
@@ -123,6 +119,151 @@
           </div>
           <div *ngIf="f['jobTitle'].errors?.['maxlength']">
             Maximum 200 characters.
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+
+      <div formArrayName="contacts" class="form-group">
+        <div class="">
+          <label>Contact Information</label>
+          <button
+            type="button"
+            class="btn btn-secondary float-right m-2"
+            (click)="addContact()"
+          >
+            Add Contact
+          </button>
+        </div>
+        <table
+          *ngIf="this.resourceForm.get('contacts')['controls'].length > 0"
+          class="table table-bordered"
+        >
+          <thead class="table">
+            <tr>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let contact of contacts.controls; let i = index"
+              [formGroupName]="i"
+            >
+              <td>
+                <input
+                  type="text"
+                  formControlName="phoneNo"
+                  class="form-control"
+                  placeholder="Enter phone number"
+                />
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-danger btn-sm"
+                  (click)="removeContact(i)"
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div
+        *ngIf="f['contacts'].invalid && f['contacts'].touched"
+        class="text-danger"
+      >
+        <div *ngIf="f['contacts'].errors?.['required']">
+          At least one contact is required.
+        </div>
+      </div>
+      </div>
+
+      <!-- Address -->
+      <div formArrayName="addresses" class="form-group mt-2">
+        <div class="">
+          <label>Address Information</label>
+          <button
+            type="button"
+            class="btn btn-secondary float-right"
+            (click)="addAddress()"
+          >
+            Add Address
+          </button>
+        </div>
+        <table
+          *ngIf="this.resourceForm.get('addresses')['controls'].length > 0"
+          class="table table-bordered"
+        >
+          <thead class="table-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Address Line 1</th>
+              <th scope="col">Address Line 2</th>
+              <th scope="col">Pincode</th>
+              <th scope="col">Landmark</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let address of addresses.controls; let i = index"
+              [formGroupName]="i"
+            >
+              <td>{{ i + 1 }}</td>
+              <td>
+                <input
+                  type="text"
+                  formControlName="addressLine1"
+                  class="form-control"
+                  placeholder="Enter address line 1"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  formControlName="addressLine2"
+                  class="form-control"
+                  placeholder="Enter address line 2"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  formControlName="pincode"
+                  class="form-control"
+                  placeholder="Enter pincode"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  formControlName="landmark"
+                  class="form-control"
+                  placeholder="Enter landmark"
+                />
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-danger btn-sm"
+                  (click)="removeAddress(i)"
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div
+          *ngIf="f['addresses'].invalid && f['addresses'].touched"
+          class="text-danger"
+        >
+          <div *ngIf="f['addresses'].errors?.['required']">
+            At least one address is required.
           </div>
         </div>
       </div>

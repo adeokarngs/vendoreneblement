@@ -1,1 +1,93 @@
-<p>view-resource works!</p>
+<section class="profile-container">
+    <div class="container">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <div class="profile-image">
+          <img [src]="objResource?.photoUrl || 'img/default-avatar.png'" 
+               alt="Profile Picture"
+               class="profile-picture">
+        </div>
+        <div class="profile-info">
+          <h1 class="profile-name">{{ objResource?.name }}</h1>
+          <p class="profile-title">{{ objResource?.jobTitle }}</p>
+          <div class="profile-meta">
+            <span class="meta-item">
+              <i class="fas fa-building"></i>
+              {{ objResource?.vendorDetails?.companyName }}
+            </span>
+            <span class="meta-item">
+              <i class="fas fa-user-tag"></i>
+              {{ objResource?.vendorDetails?.vendorName }}
+            </span>
+            <span class="meta-item">
+              <i class="fas fa-venus-mars"></i>
+              {{ objResource?.gender?.value }}
+            </span>
+            <span class="meta-item">
+              <i class="fas fa-birthday-cake"></i>
+              {{ objResource?.age }} years
+            </span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Main Content -->
+      <div class="profile-content">
+        <!-- Contact & Address Section -->
+        <div class="content-section">
+          <div class="contact-info">
+            <h3 class="section-title">
+              <i class="fas fa-address-book"></i>
+              Contact Information
+            </h3>
+            <div class="contact-list">
+              <div *ngFor="let contact of objResource?.contacts" class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>{{ contact?.phoneNo }}</span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="address-info" *ngIf="objResource?.addresses?.length">
+            <h3 class="section-title">
+              <i class="fas fa-map-marker-alt"></i>
+              Address Details
+            </h3>
+            <div class="address-list">
+              <div *ngFor="let address of objResource?.addresses" class="address-item">
+                <p>{{ address?.addressLine1 }}, {{ address?.addressLine2 }}</p>
+                <p>{{ address?.pincode }}</p>
+                <p class="text-muted">{{ address?.landmark }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Skills Section -->
+        <div class="content-section">
+          <h3 class="section-title">
+            <i class="fas fa-tools"></i>
+            Skills & Expertise
+          </h3>
+          <div class="skills-container">
+            <div class="skill-category">
+              <h4>Primary Skills</h4>
+              <div class="skill-list">
+                <span *ngFor="let skill of objResource?.mainSkills" class="skill-tag">
+                  {{ skill?.skill?.value }}
+                </span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h4>Secondary Skills</h4>
+              <div class="skill-list">
+                <span *ngFor="let skill of objResource?.subSkills" class="skill-tag">
+                  {{ skill?.skill?.value }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

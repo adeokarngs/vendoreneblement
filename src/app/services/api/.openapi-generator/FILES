@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
@@ -28,6 +27,8 @@ model/projectResourceMapping.ts
 model/registrationDto.ts
 model/resource.ts
 model/role.ts
+model/searchResource.ts
+model/searchResourceGridRequest.ts
 model/subSkillMapping.ts
 model/user.ts
 model/vendorDetails.ts

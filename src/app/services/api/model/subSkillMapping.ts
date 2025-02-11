@@ -17,6 +17,8 @@ export interface SubSkillMapping {
     createdDate?: string;
     updatedDate?: string | null;
     skillId?: number;
+    resourceId?: number | null;
+    consultantId?: number | null;
     skill?: Master;
 }
 

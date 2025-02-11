@@ -8,7 +8,6 @@
  * Do not edit the class manually.
  */
 import { Master } from './master';
-import { Resource } from './resource';
 
 
 export interface VendorDetails { 
@@ -18,7 +17,6 @@ export interface VendorDetails {
     createdDate?: string;
     updatedDate?: string | null;
     userId?: number;
-    resources?: Array<Resource> | null;
     emailId: string;
     vendorName: string;
     companyName: string;

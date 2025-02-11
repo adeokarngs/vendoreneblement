@@ -10,9 +10,9 @@ import { RoleEnums } from '../constants/enums/RoleEnums';
 export class MenuService {
   menuMaster = [
     {
-      path: '/user/user-dashboard',
+      path: '/dashboard',
       title: 'Dashboard',
-      isAccessibleTo: `${(RoleEnums.Consultant, RoleEnums.Vendor)}`,
+      isAccessibleTo: `${(RoleEnums.Consultant, RoleEnums.Vendor,RoleEnums.HR)}`,
     },
     {
       path: '/user/user-profile',

@@ -4,7 +4,6 @@ import {
   EventEmitter,
   Input,
   Output,
-  output,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
@@ -20,11 +19,11 @@ export class ServerGridComponent {
   @Input() apiUrl!: string; // Backend API URL
   @Input() columns: GridColumn[] = []; // Column Config
   @Input() uData: any; // Column Config
-  @Input() showActionButtons: boolean; // Column Config
+  @Input() showActionButtons: boolean = false // Column Config
 
-  @Output() onView = new EventEmitter<any>();
-  @Output() onEdit = new EventEmitter<any>();
-  @Output() onDelete = new EventEmitter<any>();
+  @Output() onView: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onEdit: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
   rows: any[] = [];
   totalRecords: number = 0;
   loading: boolean = false;
@@ -43,7 +42,7 @@ export class ServerGridComponent {
     this.loadData();
   }
   checkActionButtons() {
-    if (this.showActionButtons) {
+    if (this.showActionButtons == true) {
       if (this.columns) {
         this.columns.push({
           name: 'Actions',

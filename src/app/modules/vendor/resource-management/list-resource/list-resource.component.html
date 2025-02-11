@@ -1,2 +1,12 @@
-<app-server-grid class="" [uData]="uData" [apiUrl]="url" [columns]="columns" [showActionButtons]="true"></app-server-grid>
-
+<div class="col-md-12">
+  <button class="btn btn-primary mb-2 float-right" [routerLink]="'/vendor/add-resource'" >Add New Resource + </button>
+</div>
+<app-server-grid
+  class=""
+  [uData]="uData"
+  [apiUrl]="url"
+  [columns]="columns"
+  [showActionButtons]="true"
+  (onView)="view($event)"
+  (onEdit)="edit($event)"
+></app-server-grid>

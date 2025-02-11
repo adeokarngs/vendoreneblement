@@ -1,4 +1,4 @@
-<app-server-grid class="" [apiUrl]="url" [columns]="columns" [showActionButtons]="true"></app-server-grid>
+<app-server-grid class="" [apiUrl]="url" [columns]="columns" [showActionButtons]="true" (onView)="view($event)"></app-server-grid>
 
 <!-- 
 <ng-template #actionTemplate let-row>

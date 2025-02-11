@@ -30,11 +30,13 @@ import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { VendorModule } from './modules/vendor/vendor.module';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CommonModule } from '@angular/common';
+import { HumanResourceModule } from './modules/human-resource/human-resource.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AuthModule,
@@ -63,6 +65,8 @@ import { CommonModule } from '@angular/common';
       },
     }),
     CommonModule,
+    NgbModule,
+    HumanResourceModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

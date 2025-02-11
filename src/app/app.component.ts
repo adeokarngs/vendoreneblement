@@ -19,15 +19,10 @@ import { LoaderService } from './core/helpers/loader.service';
 })
 export class AppComponent {
   title = 'VendorEnablementPortall';
-  /**
-   *
-   */
   constructor(
-    private _router: Router,
     private _session: SessionHelperService,
-    private toastr: ToastrService,
+
     private _menu: MenuService,
-    private _loader: LoaderService,
   ) {
     // this._router.events.subscribe((event) => {
     //   if (event instanceof NavigationStart) {

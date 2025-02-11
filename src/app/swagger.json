@@ -440,8 +440,72 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "uData.VendorDetailsId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Resource/GetResourceById{id}": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "operationId": "GetResourceById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Resource/search-resource": {
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "operationId": "search-resource",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchResourceGridRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchResourceGridRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchResourceGridRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1280,10 +1344,12 @@
           },
           "consultantId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
-          "phoneCode": {
-            "type": "string",
+          "resourceId": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
           "phoneNo": {
@@ -1354,6 +1420,16 @@
           "skillId": {
             "type": "integer",
             "format": "int32"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "consultantId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "skill": {
             "$ref": "#/components/schemas/Master"
@@ -1531,7 +1607,8 @@
         "required": [
           "genderId",
           "jobTitle",
-          "name"
+          "name",
+          "vendorDetailsId"
         ],
         "type": "object",
         "properties": {
@@ -1563,6 +1640,13 @@
             "minLength": 2,
             "type": "string"
           },
+          "vendorDetailsId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vendorDetails": {
+            "$ref": "#/components/schemas/VendorDetails"
+          },
           "genderId": {
             "type": "integer",
             "format": "int32"
@@ -1592,6 +1676,13 @@
             "maxLength": 200,
             "minLength": 0,
             "type": "string"
+          },
+          "contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Contact"
+            },
+            "nullable": true
           },
           "mainSkills": {
             "type": "array",
@@ -1661,6 +1752,41 @@
         },
         "additionalProperties": false
       },
+      "SearchResource": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchResourceGridRequest": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sortColumn": {
+            "type": "string",
+            "nullable": true
+          },
+          "sortOrder": {
+            "type": "string",
+            "nullable": true
+          },
+          "uData": {
+            "$ref": "#/components/schemas/SearchResource"
+          }
+        },
+        "additionalProperties": false
+      },
       "SubSkillMapping": {
         "type": "object",
         "properties": {
@@ -1690,6 +1816,16 @@
           "skillId": {
             "type": "integer",
             "format": "int32"
+          },
+          "resourceId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "consultantId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "skill": {
             "$ref": "#/components/schemas/Master"
@@ -1811,13 +1947,6 @@
           "userId": {
             "type": "integer",
             "format": "int32"
-          },
-          "resources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Resource"
-            },
-            "nullable": true
           },
           "emailId": {
             "maxLength": 100,

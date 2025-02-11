@@ -10,6 +10,8 @@ export * from './projectResourceMapping';
 export * from './registrationDto';
 export * from './resource';
 export * from './role';
+export * from './searchResource';
+export * from './searchResourceGridRequest';
 export * from './subSkillMapping';
 export * from './user';
 export * from './vendorDetails';

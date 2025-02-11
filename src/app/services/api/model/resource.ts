@@ -11,7 +11,9 @@ import { Master } from './master';
 import { Address } from './address';
 import { SubSkillMapping } from './subSkillMapping';
 import { ProjectResourceMapping } from './projectResourceMapping';
+import { VendorDetails } from './vendorDetails';
 import { MainSkillMapping } from './mainSkillMapping';
+import { Contact } from './contact';
 
 
 export interface Resource { 
@@ -21,12 +23,15 @@ export interface Resource {
     createdDate?: string;
     updatedDate?: string | null;
     name: string;
+    vendorDetailsId: number;
+    vendorDetails?: VendorDetails;
     genderId: number;
     gender?: Master;
     age?: number;
     phoneNumber?: string | null;
     email?: string | null;
     jobTitle: string;
+    contacts?: Array<Contact> | null;
     mainSkills?: Array<MainSkillMapping> | null;
     subSkills?: Array<SubSkillMapping> | null;
     addresses?: Array<Address> | null;

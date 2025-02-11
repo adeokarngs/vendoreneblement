@@ -27,6 +27,11 @@ export class ManageUsersComponent {
       // },
     ];
   }
+  view(row: any): void {
+    debugger;
+    console.log('Edit clicked', row);
+  }
+
   edit(row: any): void {
     debugger;
     console.log('Edit clicked', row);

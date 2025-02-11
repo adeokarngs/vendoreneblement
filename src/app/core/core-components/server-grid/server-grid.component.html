@@ -29,7 +29,6 @@
     <!-- Custom Header Template -->
     <ng-template ngx-datatable-header-template let-column="column">
       <span class="fw-bold">
-      
         <ng-container *ngIf="col.headerTemplate; else defaultHeader">
           <ng-container
             [ngTemplateOutlet]="col.headerTemplate"
@@ -37,7 +36,7 @@
           ></ng-container>
         </ng-container>
         <ng-template #defaultHeader>
-          <strong class="text-default">{{column.name}}</strong>
+          <strong class="text-default">{{ column.name }}</strong>
         </ng-template>
       </span>
     </ng-template>
@@ -52,6 +51,7 @@
               $implicit: row,
               value: value,
               column: col,
+              grid: this
             }"
           >
           </ng-container>
@@ -74,8 +74,8 @@
   </ngx-datatable-column>
 </ngx-datatable>
 
-<ng-template #actionTemplate let-row>
-  <i class="fa fa-eye text-secondary" (click)="view(row)"></i>
-  <i class="fa fa-pen mx-2 text-primary" (click)="edit(row)"></i>
-  <i class="fa fa-trash text-danger" (click)="delete(row)"></i>
+<ng-template #actionTemplate let-row let-grid="grid">
+<i class="fa fa-eye text-secondary" (click)="grid.view(row)"></i>
+  <i class="fa fa-pen mx-2 text-primary" (click)="grid.edit(row)"></i>
+  <i class="fa fa-trash text-danger" (click)="grid.delete(row)"></i>
 </ng-template>
